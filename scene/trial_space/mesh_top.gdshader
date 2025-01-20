@@ -11,13 +11,12 @@ void fragment() {
 	vec2 uv = UV;
 	vec2 p = uv * frequency;
 	float time = TIME * speed;
-	
+
 	float r = sin(p.x + p.y + time) * 0.5 + 0.5;
 	ALBEDO = strip_color.rgb;
-	
+
 	if ((r>0.5)||(k<0.9)) {
 		ALPHA = 0.0;
 	}
-	
-}
 
+}

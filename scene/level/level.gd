@@ -15,6 +15,7 @@ const CHESSBOARD_GRID_SIZE : Vector2 = Vector2(4.0 , 4.0)
 @onready var chess_container: Node = $ChessContainer
 @onready var chessboard: GridMap = $Chessboard
 @onready var camera_3d: LevelCamera = $Camera3D
+@onready var aim_box_container: Node = $AimBoxContainer
 
 
 @onready var transform_select_panel: PanelContainer = $CanvasLayer/TransformSelectPanel
@@ -125,18 +126,32 @@ func get_player_action_list():
 
 
 
-
+# TODO
 func rewind_to_turn_start():
 	pass
 
+# TODO
 func rewind_to_last_turn():
 	pass
 
 func grid_pos_to_grid_map_pos(grid_pos : Vector2i)->Vector3i:
 	return Vector3i(grid_pos.x,0,grid_pos.y)
 
+## @deprecated: 旧有的试图使用改变gridmap棋盘格实现瞄准的方法, 推荐改用向aim_box_container放置mesh实现瞄准 
 func set_grid(grid_pos : Vector2i, mesh_id : int):
 	var grid_map_pos : Vector3i = grid_pos_to_grid_map_pos(grid_pos)
 	var cell_item_id = chessboard.get_cell_item(grid_map_pos)
 	if cell_item_id != chessboard.INVALID_CELL_ITEM and mesh_id != chessboard.INVALID_CELL_ITEM:
 		chessboard.set_cell_item(grid_map_pos,mesh_id)
+
+func set_aim_box(grid_pos : Vector2i, color : Color):
+	var grid_map_pos: Vector3i = grid_pos_to_grid_map_pos(grid_pos)
+	var aim_box : AimBox = preload("res://scene/aim_box/AimBox.tscn").instantiate()
+	aim_box.set_color(color)
+	aim_box.global_position = chessboard.map_to_local(grid_map_pos)
+	aim_box_container.add_child(aim_box)
+
+func clear_aim_box():
+	for child in aim_box_container.get_children():
+		if child is AimBox:
+			child.queue_free()

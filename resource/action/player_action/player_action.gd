@@ -5,6 +5,8 @@ class_name PlayerAction
 
 var aiming_grid_pos_list : Array[Vector2i] = []
 
+
+## @experimental: level.set_grid()已经弃用
 func clear_aim():
 	var level : Level = GlobalValue.level
 	for aiming_grid_pos in aiming_grid_pos_list:

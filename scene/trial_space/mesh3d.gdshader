@@ -2,7 +2,8 @@ shader_type spatial;
 
 uniform float speed : hint_range(0.1, 100.0) = 1.0;
 uniform float frequency: hint_range(0.01, 100.0)=1.0;
-uniform vec4 strip_color : source_color;
+instance uniform vec4 strip_color : source_color = vec4(1.0);
+instance uniform float emissive_strength : hint_range(0.0, 10.0) = 0.5;
 
 void fragment() {
 	vec2 uv = UV;
@@ -21,6 +22,9 @@ void fragment() {
     ALBEDO = strip_color.rgb;
 	if (r>0.5){
 		ALPHA = 0.0;
+	} else {
+		ALPHA = strip_color.a;
+		EMISSION = strip_color.rgb * emissive_strength;
 	}
 	
 }

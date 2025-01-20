@@ -65,6 +65,11 @@ d={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="aim_box"
+3d_physics/layer_3="chess"
+
 [rendering]
 
 anti_aliasing/quality/msaa_3d=1
