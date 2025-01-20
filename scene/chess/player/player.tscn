@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://cypaufxeaoj1p"]
+
+[ext_resource type="PackedScene" uid="uid://n7wtw02ly2df" path="res://scene/chess/chess.tscn" id="1_gcbtm"]
+[ext_resource type="Script" path="res://scene/chess/player/player.gd" id="2_s3w1b"]
+[ext_resource type="Script" path="res://resource/action/player_action/player_action.gd" id="3_6j6r7"]
+[ext_resource type="Texture2D" uid="uid://o3jsx0yb0pf" path="res://asset/texture/changeling.png" id="3_eipt5"]
+[ext_resource type="Resource" uid="uid://e3p0mdbp06eb" path="res://resource/action/player_action/player_action_res/player_cross_move.tres" id="4_xpo7t"]
+
+[node name="Player" groups=["player"] instance=ExtResource("1_gcbtm")]
+script = ExtResource("2_s3w1b")
+changeling_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("4_xpo7t")])
+turtle_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("4_xpo7t")])
+bat_action_list = Array[ExtResource("3_6j6r7")]([])
+slime_action_list = Array[ExtResource("3_6j6r7")]([])
+chess_name = "player"
+
+[node name="Sprite3D" parent="MeshInstance3D" index="0"]
+texture = ExtResource("3_eipt5")

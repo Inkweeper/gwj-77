@@ -1,0 +1,154 @@
+[gd_scene load_steps=13 format=3 uid="uid://dcce8gpa7w8ln"]
+
+[ext_resource type="MeshLibrary" uid="uid://cd2ry0nss134f" path="res://scene/mesh_library/floor.tres" id="1_bvi4l"]
+[ext_resource type="PackedScene" uid="uid://cypaufxeaoj1p" path="res://scene/chess/player/player.tscn" id="1_uxb30"]
+[ext_resource type="Script" path="res://scene/level/level.gd" id="1_vsp8c"]
+[ext_resource type="Script" path="res://class_definition/node/statemachine/statemachine.gd" id="2_6orld"]
+[ext_resource type="Script" path="res://class_definition/node/statemachine/state.gd" id="3_bnaqq"]
+[ext_resource type="Script" path="res://scene/level/level_beginning.gd" id="3_eq5bl"]
+[ext_resource type="Script" path="res://scene/level/player_turn_start.gd" id="4_mgmdw"]
+[ext_resource type="Script" path="res://scene/level/player_turn.gd" id="6_cebi6"]
+[ext_resource type="Script" path="res://scene/level/camera_3d.gd" id="9_by7vy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yvf62"]
+sky_top_color = Color(0.599403, 0.664734, 0.755768, 1)
+sky_horizon_color = Color(0.854902, 0.341176, 0.32549, 1)
+sky_energy_multiplier = 0.5
+ground_bottom_color = Color(0.233834, 0.198867, 0.158267, 1)
+ground_horizon_color = Color(0.937255, 0.521569, 0.443137, 1)
+ground_curve = 0.0141421
+sun_angle_max = 75.0
+sun_curve = 0.113679
+
+[sub_resource type="Sky" id="Sky_fwpjx"]
+sky_material = SubResource("ProceduralSkyMaterial_yvf62")
+
+[sub_resource type="Environment" id="Environment_wqh2g"]
+background_mode = 2
+sky = SubResource("Sky_fwpjx")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 2.0
+glow_hdr_scale = 0.0
+fog_enabled = true
+fog_light_color = Color(0.0923462, 0.210717, 0.265686, 1)
+fog_sun_scatter = 0.3
+fog_density = 0.005
+fog_sky_affect = 0.5
+fog_height_density = 1.0
+fog_depth_begin = 100.0
+fog_depth_end = 400.0
+adjustment_enabled = true
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_vsp8c")
+chessboard_size = Vector2i(6, 6)
+total_transform_permissions = Array[int]([1, 2, 3])
+
+[node name="Statemachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("2_6orld")
+start_state = NodePath("LevelBeginning")
+
+[node name="LevelBeginning" type="Node" parent="Statemachine"]
+script = ExtResource("3_eq5bl")
+
+[node name="PlayerTurnStart" type="Node" parent="Statemachine"]
+script = ExtResource("4_mgmdw")
+
+[node name="RewindTurnStart" type="Node" parent="Statemachine"]
+script = ExtResource("3_bnaqq")
+
+[node name="PlayerTurn" type="Node" parent="Statemachine"]
+script = ExtResource("6_cebi6")
+
+[node name="EnemyTurn" type="Node" parent="Statemachine"]
+script = ExtResource("3_bnaqq")
+
+[node name="TurnEnding" type="Node" parent="Statemachine"]
+script = ExtResource("3_bnaqq")
+
+[node name="Failure" type="Node" parent="Statemachine"]
+script = ExtResource("3_bnaqq")
+
+[node name="ChessContainer" type="Node" parent="."]
+
+[node name="Player" parent="ChessContainer" instance=ExtResource("1_uxb30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+
+[node name="Chessboard" type="GridMap" parent="."]
+mesh_library = ExtResource("1_bvi4l")
+cell_size = Vector3(4, 0.1, 4)
+data = {
+"cells": PackedInt32Array(0, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 4, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 4, 1, 0, 5, 2, 0, 3, 1, 0, 5, 0, 0, 1, 2, 0, 1, 3, 0, 0, 3, 0, 0, 2, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 2, 3, 0, 5, 1, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 5, 5, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.383022, 0.321394, 0, 0.642788, 0.766044, -0.5, 0.663414, -0.55667, 0, 0, 0)
+light_energy = 0.6
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wqh2g")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.224951, 0.97437, 0, -0.97437, 0.224951, 12, 20, 20)
+script = ExtResource("9_by7vy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InformationPanel" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.235
+anchor_bottom = 1.0
+offset_right = -0.720001
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/InformationPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/InformationPanel/VBoxContainer"]
+layout_mode = 2
+text = "Information"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TransformSelectPanel" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_right = 800.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TransformSelectPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/TransformSelectPanel/VBoxContainer"]
+layout_mode = 2
+text = "Choose Your Form"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TransformSelectPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionSelectPanel" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_right = 800.0
+grow_horizontal = 0
+grow_vertical = 0

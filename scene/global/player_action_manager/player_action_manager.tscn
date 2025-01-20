@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfh685nmmfs8x"]
+
+[ext_resource type="Script" path="res://scene/global/player_action_manager/player_action_manager.gd" id="1_vxhvr"]
+
+[node name="PlayerActionManager" type="Node"]
+script = ExtResource("1_vxhvr")

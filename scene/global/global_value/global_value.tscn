@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8k35y6pj1ree"]
+
+[ext_resource type="Script" path="res://scene/global/global_value/global_value.gd" id="1_mvsqc"]
+[ext_resource type="PackedScene" uid="uid://cypaufxeaoj1p" path="res://scene/chess/player/player.tscn" id="2_in4oh"]
+
+[node name="GlobalValue" type="Node"]
+script = ExtResource("1_mvsqc")
+chess_configuration = {
+"player": ExtResource("2_in4oh")
+}

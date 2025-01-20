@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmwuag3cvwlkb"]
+
+[ext_resource type="PackedScene" uid="uid://n7wtw02ly2df" path="res://scene/chess/chess.tscn" id="1_yrrur"]
+[ext_resource type="Script" path="res://scene/chess/enemy/enemy.gd" id="2_qv7pq"]
+[ext_resource type="Script" path="res://resource/action/action.gd" id="3_5csy3"]
+
+[node name="Enemy" instance=ExtResource("1_yrrur")]
+script = ExtResource("2_qv7pq")
+action_list = Array[ExtResource("3_5csy3")]([])

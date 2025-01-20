@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbjs878ssble7"]
+
+[ext_resource type="Script" path="res://scene/trial_space/mesh.gd" id="1_n8yk5"]
+[ext_resource type="Shader" path="res://scene/trial_space/mesh_top.gdshader" id="1_vjntb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1b87w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jn4u7"]
+render_priority = 0
+shader = ExtResource("1_vjntb")
+shader_parameter/speed = 10.0
+shader_parameter/frequency = 50.0
+shader_parameter/strip_color = Color(0.917647, 0.729412, 0.282353, 1)
+
+[node name="Mesh" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_1b87w")
+surface_material_override/0 = SubResource("ShaderMaterial_jn4u7")
+script = ExtResource("1_n8yk5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.370249, -0.766684, 0.524511, 0.442138, 0.642025, 0.626353, -0.816964, 0, 0.576689, 1.99719, 2, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.876307, -0.19978, 0.438377, 0, 0.909961, 0.414693, -0.481754, -0.363398, 0.797405, 0, 0, 0)

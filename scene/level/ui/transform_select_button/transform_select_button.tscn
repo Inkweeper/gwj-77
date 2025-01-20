@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b62xkukpcnc1c"]
+
+[ext_resource type="Texture2D" uid="uid://80aq1h0sa7o4" path="res://asset/texture/emerald golem.png" id="1_usoef"]
+[ext_resource type="Script" path="res://scene/level/ui/transform_select_button/transform_select_button.gd" id="2_o103j"]
+
+[node name="TransformSelectButton" type="Button"]
+custom_minimum_size = Vector2(90, 90)
+offset_right = 136.0
+offset_bottom = 136.0
+size_flags_vertical = 3
+icon = ExtResource("1_usoef")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_o103j")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
