@@ -19,6 +19,7 @@ const CHESSBOARD_GRID_SIZE : Vector2 = Vector2(4.0 , 4.0)
 
 
 @onready var transform_select_panel: PanelContainer = $CanvasLayer/TransformSelectPanel
+@onready var action_select_panel: PanelContainer = $CanvasLayer/ActionSelectPanel
 
 # /
 
@@ -64,7 +65,8 @@ func register_chess_status_this_turn():
 	chessboard_history_index += 1
 
 
-# PlayerTurnStart
+# /PlayerTurnStart
+
 ## 弹出变形选择窗口
 func ask_for_morph():
 	var transform_list : Array = current_transform_permissions.duplicate()
@@ -117,14 +119,37 @@ func decide_morph(form:Player.Form):
 	
 	player.morph(form)
 
-# PlayerTurn
+# /
+
+# /PlayerTurn
+
 ## 复制并保存本形态行动列表, 以供后续选用
-var player_action_list : Array
+var player_action_list : Array = []
 func get_player_action_list():
 	var player : Player = get_tree().get_first_node_in_group("player")
 	player_action_list = player.get_action_list()
 
+## 将本形态行动列表用ui展示
+func show_action_list():
+	action_select_panel.show()
+	var action_button_container : HBoxContainer = $CanvasLayer/ActionSelectPanel/VBoxContainer/HBoxContainer
+	
+	for player_action in player_action_list:
+		if player_action is PlayerAction:
+			var button : PlayerActionSelectButton = preload("res://scene/level/ui/player_action_select_button/player_action_select_button.tscn").instantiate()
+			button.player_action = player_action
+			action_button_container.add_child(button)
+		
+	
+	var end_turn_button : EndTurnButton = preload("res://scene/level/ui/end_turn_button/end_turn_button.tscn").instantiate()
+	action_button_container.add_child(end_turn_button)
+	
+	var tween : Tween = create_tween()
+	tween.tween_property(action_select_panel, "position", Vector2(352,528),0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	
 
+# /
 
 # TODO
 func rewind_to_turn_start():

@@ -9,7 +9,7 @@ func initialize():
 func enter():
 	#print("player turn")
 	GlobalValue.level.get_player_action_list()
-	
+	GlobalValue.level.show_action_list()
 	pass
 
 func exit():

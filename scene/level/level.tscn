@@ -148,7 +148,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionSelectPanel" type="PanelContainer" parent="CanvasLayer"]
-visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -158,3 +157,14 @@ offset_top = -120.0
 offset_right = 800.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ActionSelectPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/ActionSelectPanel/VBoxContainer"]
+layout_mode = 2
+text = "Choose Your Action"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ActionSelectPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
