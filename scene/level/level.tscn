@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://scene/level/level_beginning.gd" id="3_eq5bl"]
 [ext_resource type="Script" path="res://scene/level/player_turn_start.gd" id="4_mgmdw"]
 [ext_resource type="Script" path="res://scene/level/player_turn.gd" id="6_cebi6"]
+[ext_resource type="Script" path="res://scene/level/enemy_turn.gd" id="7_300kb"]
 [ext_resource type="Script" path="res://scene/level/camera_3d.gd" id="9_by7vy"]
-[ext_resource type="PackedScene" uid="uid://d258c4rwi22ix" path="res://scene/aim_box/AimBox.tscn" id="9_itflt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yvf62"]
 sky_top_color = Color(0.599403, 0.664734, 0.755768, 1)
@@ -68,7 +68,7 @@ script = ExtResource("3_bnaqq")
 script = ExtResource("6_cebi6")
 
 [node name="EnemyTurn" type="Node" parent="Statemachine"]
-script = ExtResource("3_bnaqq")
+script = ExtResource("7_300kb")
 
 [node name="TurnEnding" type="Node" parent="Statemachine"]
 script = ExtResource("3_bnaqq")
@@ -79,7 +79,7 @@ script = ExtResource("3_bnaqq")
 [node name="ChessContainer" type="Node" parent="."]
 
 [node name="Player" parent="ChessContainer" instance=ExtResource("1_uxb30")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
 
 [node name="Chessboard" type="GridMap" parent="."]
 mesh_library = ExtResource("1_bvi4l")
@@ -90,9 +90,6 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="AimBoxContainer" type="Node" parent="."]
-
-[node name="AimBox" parent="AimBoxContainer" instance=ExtResource("9_itflt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 10)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.383022, 0.321394, 0, 0.642788, 0.766044, -0.5, 0.663414, -0.55667, 0, 0, 0)

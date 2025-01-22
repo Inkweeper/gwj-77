@@ -147,8 +147,21 @@ func show_action_list():
 	var tween : Tween = create_tween()
 	tween.tween_property(action_select_panel, "position", Vector2(352,528),0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	await tween.finished
-	
 
+## 隐藏行动列表ui
+func hide_action_list():
+	var action_button_container : HBoxContainer = $CanvasLayer/ActionSelectPanel/VBoxContainer/HBoxContainer
+	for child in action_button_container.get_children():
+		if child is PlayerActionSelectButton:
+			child.disable_button()
+	
+	var tween : Tween = create_tween()
+	tween.tween_property(action_select_panel, "position", Vector2(1152,528),0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	await tween.finished
+	
+	for child in action_button_container.get_children():
+		child.queue_free()
+	action_select_panel.hide()
 # /
 
 # TODO
@@ -169,14 +182,40 @@ func set_grid(grid_pos : Vector2i, mesh_id : int):
 	if cell_item_id != chessboard.INVALID_CELL_ITEM and mesh_id != chessboard.INVALID_CELL_ITEM:
 		chessboard.set_cell_item(grid_map_pos,mesh_id)
 
+
+## 检查某格在不在棋盘上
+func check_grid_pos_validity(grid_pos : Vector2i)->bool:
+	var grid_map_pos : Vector3i = grid_pos_to_grid_map_pos(grid_pos)
+	var cell_item_id = chessboard.get_cell_item(grid_map_pos)
+	if cell_item_id != chessboard.INVALID_CELL_ITEM:
+		return true
+	else:
+		return false
+
+## 在某格放置瞄准框
 func set_aim_box(grid_pos : Vector2i, color : Color):
+	if not check_grid_pos_validity(grid_pos):
+		return
 	var grid_map_pos: Vector3i = grid_pos_to_grid_map_pos(grid_pos)
 	var aim_box : AimBox = preload("res://scene/aim_box/AimBox.tscn").instantiate()
+	aim_box_container.add_child(aim_box)
 	aim_box.set_color(color)
 	aim_box.global_position = chessboard.map_to_local(grid_map_pos)
-	aim_box_container.add_child(aim_box)
 
+## 清空所有瞄准框
 func clear_aim_box():
 	for child in aim_box_container.get_children():
 		if child is AimBox:
 			child.queue_free()
+
+## 高亮指定瞄准框, 并且使其他瞄准框变暗
+func high_light_aim_box(aim_box : AimBox):
+	if aim_box:
+		aim_box.on_hovered()
+		for box in aim_box_container.get_children():
+			if box != aim_box:
+				if box is AimBox : box.on_unhovered()
+	else:
+		for box in aim_box_container.get_children():
+			if box is AimBox:
+				box.on_unhovered()

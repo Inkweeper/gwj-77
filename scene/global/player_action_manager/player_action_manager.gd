@@ -4,25 +4,100 @@ var is_activated : bool = false
 var processing_player_action : PlayerAction
 var processing_player_action_select_button : PlayerActionSelectButton
 
+var hovered_aim_box : AimBox
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	set_process_unhandled_input(false)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	hovered_aim_box = aim_box_highlight_check()
+	
 
-# TODO
-'''
-实现这样的效果:
-	令level获取玩家行动列表, 
-	根据列表仅一次用行动选择按钮填充行动选择面板
-	>玩家点击行动选择按钮, 将自己和行动注册到这里, 提请处理行动瞄准和执行
-	此处开始监听玩家操作
-		如果左键点击合法位置, 执行
-		如果右键取消, 恢复按钮可按下状态
-'''
+func aim_box_highlight_check()->AimBox:
+	if not is_activated:
+		return
+	var from := GlobalValue.level.camera_3d.project_ray_origin(get_viewport().get_mouse_position())
+	var to := from + GlobalValue.level.camera_3d.project_ray_normal(get_viewport().get_mouse_position())*1000
+	var physics_ray_query_parameters_3d := PhysicsRayQueryParameters3D.create(
+		from,
+		to,
+		1<<1,
+	)
+	physics_ray_query_parameters_3d.collide_with_areas = true
+	physics_ray_query_parameters_3d.collide_with_bodies = false
+	
+	var space_state := GlobalValue.level.get_world_3d().direct_space_state
+	var result := space_state.intersect_ray(physics_ray_query_parameters_3d)
+	
+	var aim_box :AimBox = null
+	
+	if not result.is_empty():
+		aim_box = result["collider"].owner
+		if aim_box is AimBox:
+			GlobalValue.level.high_light_aim_box(aim_box)
+		else:
+			GlobalValue.level.high_light_aim_box(null)
+	else:
+		GlobalValue.level.high_light_aim_box(null)
+	
+	return aim_box
+
+## 处理左右键
+# 如果左键松开时鼠标悬停在aimbox上, 则获取该格为行动格
+# 如果右键松开, 则回退本次行动
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("lmb"):
+		if hovered_aim_box:
+			if processing_player_action.action_type == Action.Type.MOVE:
+				processing_player_action.execute([hovered_aim_box.get_grid_pos()])
+				GlobalValue.level.clear_aim_box()
+				processing_player_action = null
+				processing_player_action_select_button = null
+				deactivate()
+
+	elif event.is_action_released("rmb"):
+		if processing_player_action:
+			GlobalValue.level.clear_aim_box()
+			processing_player_action_select_button.enable_button()
+			processing_player_action = null
+			processing_player_action_select_button = null
+			deactivate()
+
+## 用于行动和行动按钮注册自己
+func register_action(action:PlayerAction, button:PlayerActionSelectButton):
+	if processing_player_action:
+		GlobalValue.level.clear_aim_box()
+		processing_player_action_select_button.enable_button()
+		processing_player_action = null
+		processing_player_action_select_button = null
+	processing_player_action = action
+	processing_player_action_select_button = button
+	activate()
+
+func register_action_button(button:PlayerActionSelectButton):
+	register_action(button.player_action,button)
 
 func activate():
+	var player : Player = get_tree().get_first_node_in_group("player")
+	var color : Color
+	match processing_player_action.action_type:
+		Action.Type.ATTACK:
+			color = AimBox.DEFAULT_COLOR.ORANGE
+		Action.Type.MOVE:
+			color = AimBox.DEFAULT_COLOR.BLUE
+		_:
+			color = Color.WHITE
+	for grid in processing_player_action.allowed_target_grids:
+		if grid is Vector2i:
+			var target_grid : Vector2i = grid + player.gridpos
+			GlobalValue.level.set_aim_box(target_grid,color)
+	set_process_unhandled_input(true)
 	is_activated = true
+
+func deactivate():
+	is_activated = false
+	set_process_unhandled_input(false)

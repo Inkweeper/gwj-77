@@ -8,7 +8,7 @@
 
 [node name="Player" groups=["player"] instance=ExtResource("1_gcbtm")]
 script = ExtResource("2_s3w1b")
-changeling_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("4_xpo7t")])
+changeling_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("4_xpo7t"), ExtResource("4_xpo7t")])
 turtle_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("4_xpo7t")])
 bat_action_list = Array[ExtResource("3_6j6r7")]([])
 slime_action_list = Array[ExtResource("3_6j6r7")]([])

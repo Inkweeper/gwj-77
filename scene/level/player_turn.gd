@@ -4,6 +4,7 @@ var player : Player
 
 func initialize():
 	player = get_tree().get_first_node_in_group("player")
+	EventBus.player_end_turn.connect(_on_player_end_turn)
 	pass
 
 func enter():
@@ -17,3 +18,7 @@ func exit():
 
 func update(delta:float):
 	pass
+
+func _on_player_end_turn():
+	GlobalValue.level.hide_action_list()
+	transitioned.emit(self,"EnemyTurn")

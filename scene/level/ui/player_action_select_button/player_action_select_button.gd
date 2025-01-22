@@ -9,11 +9,17 @@ var player_action : PlayerAction :
 		player_action = v
 
 
-
 func _on_pressed() -> void:
-	PlayerActionManager.processing_player_action = player_action
-	PlayerActionManager.processing_player_action_select_button = self
-	
+	PlayerActionManager.register_action_button(self)
+	disable_button()
 
 func on_action_executed():
 	disabled = true
+
+func disable_button():
+	disabled = true
+	modulate = Color(0.3,0.3,0.3)
+
+func enable_button():
+	disabled = false
+	modulate = Color(1.0,1.0,1.0)
