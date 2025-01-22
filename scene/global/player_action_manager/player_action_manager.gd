@@ -1,8 +1,8 @@
 extends Node
 
 var is_activated : bool = false
-var processing_player_action : PlayerAction
-var processing_player_action_select_button : PlayerActionSelectButton
+var processing_player_action : PlayerAction = null
+var processing_player_action_select_button : PlayerActionSelectButton = null
 
 var hovered_aim_box : AimBox
 
@@ -63,8 +63,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if processing_player_action:
 			GlobalValue.level.clear_aim_box()
 			processing_player_action_select_button.enable_button()
-			processing_player_action = null
-			processing_player_action_select_button = null
 			deactivate()
 
 ## 用于行动和行动按钮注册自己
@@ -78,9 +76,11 @@ func register_action(action:PlayerAction, button:PlayerActionSelectButton):
 	processing_player_action_select_button = button
 	activate()
 
+## 用于行动按钮注册自己和行动
 func register_action_button(button:PlayerActionSelectButton):
 	register_action(button.player_action,button)
 
+## 启用本节点, 开始监听玩家鼠标
 func activate():
 	var player : Player = get_tree().get_first_node_in_group("player")
 	var color : Color
@@ -98,6 +98,9 @@ func activate():
 	set_process_unhandled_input(true)
 	is_activated = true
 
+## 使本节点不活跃, 清空对行动和行动按钮的储存
 func deactivate():
 	is_activated = false
+	processing_player_action = null
+	processing_player_action_select_button = null
 	set_process_unhandled_input(false)
