@@ -69,7 +69,6 @@ func register_chess_status_this_turn():
 
 ## 弹出变形选择窗口
 func ask_for_morph():
-	print("asked for morph")
 	var transform_list : Array = current_transform_permissions.duplicate()
 	# get the reference of transform selection container
 	var morph_button_container: HBoxContainer = $CanvasLayer/TransformSelectPanel/VBoxContainer/HBoxContainer

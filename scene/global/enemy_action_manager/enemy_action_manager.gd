@@ -29,6 +29,7 @@ func register_enemy(enemy : Enemy):
 	
 ## 处理敌人行动
 func process_enemy_action():
+	await get_tree().create_timer(0.4).timeout
 	# 是否可以行动, 行动了没有? 如果没有, 那么就不必要再行动了
 	
 	# 首先判断能否攻击. 如果可以, 这个敌人本回合的事实际已经做完了, 所以可以发送信号和return
