@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dpseb0vyiqe6o"]
+
+[ext_resource type="Texture2D" uid="uid://dek0s63eop6j6" path="res://asset/texture/aiming-grids/gwj-77-aiming-3.png" id="1_yx5ot"]
+[ext_resource type="Script" path="res://resource/action/player_action/player_action_res/player_move.gd" id="2_bfpql"]
+
+[resource]
+script = ExtResource("2_bfpql")
+allowed_target_grids = Array[Vector2i]([Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, 1), Vector2i(-1, -1)])
+action_name = "X Move"
+action_type = 1
+range_indication_texture = ExtResource("1_yx5ot")

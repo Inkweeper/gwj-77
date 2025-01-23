@@ -94,7 +94,8 @@ func activate():
 	for grid in processing_player_action.allowed_target_grids:
 		if grid is Vector2i:
 			var target_grid : Vector2i = grid + player.gridpos
-			GlobalValue.level.set_aim_box(target_grid,color)
+			if not GlobalValue.level.check_gridpos_occupied(target_grid):
+				GlobalValue.level.set_aim_box(target_grid,color)
 	set_process_unhandled_input(true)
 	is_activated = true
 

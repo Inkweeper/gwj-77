@@ -20,5 +20,6 @@ func update(delta:float):
 	pass
 
 func _on_player_end_turn():
+	GlobalValue.level.clear_aim_box()
 	GlobalValue.level.hide_action_list()
 	transitioned.emit(self,"EnemyTurn")

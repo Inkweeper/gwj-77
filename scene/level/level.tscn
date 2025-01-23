@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcce8gpa7w8ln"]
+[gd_scene load_steps=16 format=3 uid="uid://dcce8gpa7w8ln"]
 
 [ext_resource type="MeshLibrary" uid="uid://cd2ry0nss134f" path="res://scene/mesh_library/floor.tres" id="1_bvi4l"]
 [ext_resource type="PackedScene" uid="uid://cypaufxeaoj1p" path="res://scene/chess/player/player.tscn" id="1_uxb30"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scene/level/player_turn_start.gd" id="4_mgmdw"]
 [ext_resource type="Script" path="res://scene/level/player_turn.gd" id="6_cebi6"]
 [ext_resource type="Script" path="res://scene/level/enemy_turn.gd" id="7_300kb"]
+[ext_resource type="Script" path="res://scene/level/turn_ending.gd" id="8_7b3oj"]
+[ext_resource type="PackedScene" uid="uid://0v45a5fulmc2" path="res://scene/chess/enemy/mob/mob.tscn" id="9_a6agu"]
 [ext_resource type="Script" path="res://scene/level/camera_3d.gd" id="9_by7vy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yvf62"]
@@ -71,7 +73,7 @@ script = ExtResource("6_cebi6")
 script = ExtResource("7_300kb")
 
 [node name="TurnEnding" type="Node" parent="Statemachine"]
-script = ExtResource("3_bnaqq")
+script = ExtResource("8_7b3oj")
 
 [node name="Failure" type="Node" parent="Statemachine"]
 script = ExtResource("3_bnaqq")
@@ -83,6 +85,9 @@ script = ExtResource("3_bnaqq")
 
 [node name="Player" parent="ChessContainer" instance=ExtResource("1_uxb30")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
+
+[node name="Mob" parent="ChessContainer" instance=ExtResource("9_a6agu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 14)
 
 [node name="Chessboard" type="GridMap" parent="."]
 mesh_library = ExtResource("1_bvi4l")

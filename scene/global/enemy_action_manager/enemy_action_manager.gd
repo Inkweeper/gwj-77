@@ -5,6 +5,9 @@ var enemy_had_acted : bool = false
 var attack_action_list : Array[EnemyAction] = []
 var move_action_list : Array[EnemyAction] = []
 
+func _ready() -> void:
+	EventBus.enemy_action_acted.connect(process_enemy_action)
+
 ## 清空之前的注册内容
 func clear():
 	enemy_processing = null
@@ -18,11 +21,11 @@ func register_enemy(enemy : Enemy):
 	enemy_processing = enemy
 	for action in enemy.action_list:
 		if action is EnemyAction:
-			var action_duplication := action.duplicate(true)
 			if action.action_type == Action.Type.ATTACK:
-				attack_action_list.append(action_duplication)
+				attack_action_list.append(action)
 			elif action.action_type == Action.Type.MOVE:
-				move_action_list.append(action_duplication)
+				move_action_list.append(action)
+	process_enemy_action()
 	
 ## 处理敌人行动
 func process_enemy_action():
@@ -38,10 +41,11 @@ func process_enemy_action():
 		return
 	enemy_had_acted = move_action.if_execute()
 	if enemy_had_acted:
-		EventBus.enemy_action_acted
+		EventBus.enemy_action_acted.emit()
 		return
 	else :
 		enemy_action_phase_end()
+		print("enemy valid actions all executed")
 		return
 
 ## 当前敌人所有行动执行结束时调用
