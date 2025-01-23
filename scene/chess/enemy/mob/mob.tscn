@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://0v45a5fulmc2"]
+
+[ext_resource type="PackedScene" uid="uid://cmwuag3cvwlkb" path="res://scene/chess/enemy/enemy.tscn" id="1_4jrwy"]
+[ext_resource type="Script" path="res://scene/chess/enemy/mob/mob.gd" id="2_5x1xq"]
+
+[node name="Mob" instance=ExtResource("1_4jrwy")]
+script = ExtResource("2_5x1xq")
+action_priority = 0
+chess_name = "Mob"

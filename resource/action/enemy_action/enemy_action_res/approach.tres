@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cqeqx7b7ud2jk"]
+
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/approach.gd" id="1_wior5"]
+
+[resource]
+script = ExtResource("1_wior5")
+action_name = "Approach"
+action_type = 1

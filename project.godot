@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 GlobalValue="*res://scene/global/global_value/global_value.tscn"
 EventBus="*res://scene/global/event_bus/event_bus.tscn"
 PlayerActionManager="*res://scene/global/player_action_manager/player_action_manager.tscn"
+EnemyActionManager="*res://scene/global/enemy_action_manager/enemy_action_manager.tscn"
 
 [file_customization]
 

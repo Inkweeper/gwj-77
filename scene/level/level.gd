@@ -172,8 +172,15 @@ func rewind_to_turn_start():
 func rewind_to_last_turn():
 	pass
 
+## 将gridpos:Vector2i转换为gridmap的Vector3i
 func grid_pos_to_grid_map_pos(grid_pos : Vector2i)->Vector3i:
 	return Vector3i(grid_pos.x,0,grid_pos.y)
+
+## 将gridpos:Vector2i转换为Y轴归零的空间Vector3点位
+func grid_pos_to_position(grid_pos:Vector2i)->Vector3:
+	var gridmap_pos : Vector3i = grid_pos_to_grid_map_pos(grid_pos)
+	var gridmap_grid_position : Vector3 = chessboard.map_to_local(gridmap_pos) + chessboard.global_position
+	return Vector3(gridmap_grid_position.x, 0.0, gridmap_grid_position.z)
 
 ## @deprecated: 旧有的试图使用改变gridmap棋盘格实现瞄准的方法, 推荐改用向aim_box_container放置mesh实现瞄准 
 func set_grid(grid_pos : Vector2i, mesh_id : int):
@@ -219,3 +226,37 @@ func high_light_aim_box(aim_box : AimBox):
 		for box in aim_box_container.get_children():
 			if box is AimBox:
 				box.on_unhovered()
+
+## 获取玩家的gridpos: Vector2i
+func get_player_gridpos()->Vector2i:
+	var player :Player = get_tree().get_first_node_in_group("player")
+	return player.gridpos
+
+## 检查某个gridpos上是否有其他棋子, 如果没有, 返回null
+func check_gridpos_occupied(gridpos:Vector2i)->Chess:
+	#TODO
+	# 假定每个棋子至少Y轴高0.2
+	var check_point_height : float = 0.2
+	var check_point_position : Vector3 = grid_pos_to_position(gridpos)
+	check_point_position.y = check_point_height
+	
+	var space :PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var parameter := PhysicsPointQueryParameters3D.new()
+	# chess用area标识自身碰撞
+	parameter.collide_with_areas = true
+	parameter.collide_with_bodies = false
+	parameter.collision_mask = 1<<2 # ?
+	parameter.position = check_point_position
+	
+	var result := space.intersect_point(parameter,1)
+	if result.size() == 0:
+		return null
+	else:
+		return result[0].collider.owner as Chess
+	return null
+
+
+#HACK: f1检查方法是否正常运行
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("f1"):
+		#print(check_gridpos_occupied(Vector2i(3,0)))

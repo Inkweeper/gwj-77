@@ -76,6 +76,9 @@ script = ExtResource("3_bnaqq")
 [node name="Failure" type="Node" parent="Statemachine"]
 script = ExtResource("3_bnaqq")
 
+[node name="Victory" type="Node" parent="Statemachine"]
+script = ExtResource("3_bnaqq")
+
 [node name="ChessContainer" type="Node" parent="."]
 
 [node name="Player" parent="ChessContainer" instance=ExtResource("1_uxb30")]
