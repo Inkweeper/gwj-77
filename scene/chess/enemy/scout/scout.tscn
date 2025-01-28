@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnatropa7knmi"]
+
+[ext_resource type="PackedScene" uid="uid://cmwuag3cvwlkb" path="res://scene/chess/enemy/enemy.tscn" id="1_or1ur"]
+[ext_resource type="Script" path="res://scene/chess/enemy/scout/scout.gd" id="2_3iyno"]
+[ext_resource type="Script" path="res://resource/action/action.gd" id="2_iky2e"]
+[ext_resource type="Resource" uid="uid://cqeqx7b7ud2jk" path="res://resource/action/enemy_action/enemy_action_res/approach.tres" id="3_ewrhq"]
+[ext_resource type="Texture2D" uid="uid://1f6yjd51vh0m" path="res://asset/texture/male valkyrie.png" id="5_kc1fa"]
+
+[node name="Scout" instance=ExtResource("1_or1ur")]
+script = ExtResource("2_3iyno")
+action_list = Array[ExtResource("2_iky2e")]([ExtResource("3_ewrhq"), ExtResource("3_ewrhq")])
+action_priority = 0
+chess_name = "Scout"
+
+[node name="Sprite3D" parent="MeshInstance3D" index="0"]
+texture = ExtResource("5_kc1fa")

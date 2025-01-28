@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://da0nfj8aivrt8"]
+
+[ext_resource type="Texture2D" uid="uid://dn75x10qapxrk" path="res://asset/texture/aiming-grids/gwj-77-aiming-5.png" id="1_7ti6e"]
+[ext_resource type="Script" path="res://resource/action/player_action/player_action_res/player_attack.gd" id="2_d2esa"]
+
+[resource]
+script = ExtResource("2_d2esa")
+allowed_target_grids = Array[Vector2i]([Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, 1), Vector2i(-1, -1)])
+action_name = "X Attack"
+action_type = 0
+range_indication_texture = ExtResource("1_7ti6e")

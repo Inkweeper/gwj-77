@@ -58,6 +58,18 @@ func _unhandled_input(event: InputEvent) -> void:
 				processing_player_action = null
 				processing_player_action_select_button = null
 				deactivate()
+			elif processing_player_action.action_type == Action.Type.ATTACK:
+				# TODO: 检查玩家点击的格子到底能否攻击
+				# 即: 是否有敌人
+				if GlobalValue.level.check_gridpos_occupied(hovered_aim_box.get_grid_pos())==null:
+					return
+				else:
+					processing_player_action.execute([hovered_aim_box.get_grid_pos()])
+					GlobalValue.level.clear_aim_box()
+					processing_player_action = null
+					processing_player_action_select_button = null
+					deactivate()
+				pass
 
 	elif event.is_action_released("rmb"):
 		if processing_player_action:
@@ -85,17 +97,25 @@ func activate():
 	var player : Player = get_tree().get_first_node_in_group("player")
 	var color : Color
 	match processing_player_action.action_type:
+		# 攻击行为在所有有效格子上都放下了瞄准框
+		# 至于玩家点击的瞄准框是否合格, 交由点击后的回调处理
+		# 即 _unhandled_input() 负责检查点击的格子能否攻击
 		Action.Type.ATTACK:
 			color = AimBox.DEFAULT_COLOR.ORANGE
+			for grid in processing_player_action.allowed_target_grids:
+				if grid is Vector2i:
+					var target_grid : Vector2i = grid + player.gridpos
+					GlobalValue.level.set_aim_box(target_grid,color)
+					
 		Action.Type.MOVE:
 			color = AimBox.DEFAULT_COLOR.BLUE
+			for grid in processing_player_action.allowed_target_grids:
+				if grid is Vector2i:
+					var target_grid : Vector2i = grid + player.gridpos
+					if not GlobalValue.level.check_gridpos_occupied(target_grid):
+						GlobalValue.level.set_aim_box(target_grid,color)
 		_:
-			color = Color.WHITE
-	for grid in processing_player_action.allowed_target_grids:
-		if grid is Vector2i:
-			var target_grid : Vector2i = grid + player.gridpos
-			if not GlobalValue.level.check_gridpos_occupied(target_grid):
-				GlobalValue.level.set_aim_box(target_grid,color)
+			pass
 	set_process_unhandled_input(true)
 	is_activated = true
 

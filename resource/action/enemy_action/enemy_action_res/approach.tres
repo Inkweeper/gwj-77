@@ -1,8 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cqeqx7b7ud2jk"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cqeqx7b7ud2jk"]
 
+[ext_resource type="Texture2D" uid="uid://np2oeh8f5dn6" path="res://asset/texture/aiming-grids/gwj-77-aiming-1.png" id="1_ufucl"]
 [ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/approach.gd" id="1_wior5"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_wior5")
 action_name = "Approach"
 action_type = 1
+range_indication_texture = ExtResource("1_ufucl")
