@@ -21,6 +21,10 @@ EventBus="*res://scene/global/event_bus/event_bus.tscn"
 PlayerActionManager="*res://scene/global/player_action_manager/player_action_manager.tscn"
 EnemyActionManager="*res://scene/global/enemy_action_manager/enemy_action_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={
