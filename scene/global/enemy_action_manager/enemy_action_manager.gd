@@ -7,6 +7,9 @@ var move_action_list : Array[EnemyAction] = []
 
 func _ready() -> void:
 	EventBus.enemy_action_acted.connect(process_enemy_action)
+	# TODO
+	# 当玩家被打败时, 结束敌人回合并进入失败状态
+	# 这个功能会影响其他能的调试, 因此先不做
 
 ## 清空之前的注册内容
 func clear():

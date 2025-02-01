@@ -31,3 +31,7 @@ func _on_an_enemy_completed_action():
 		transitioned.emit(self, "TurnEnding")
 		return
 	EnemyActionManager.register_enemy(enemy_list.pop_front())
+
+# TODO
+func _on_player_killed():
+	pass
