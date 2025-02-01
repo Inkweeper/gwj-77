@@ -12,6 +12,8 @@ signal player_end_turn
 signal enemy_action_registered
 ## 敌人完成了一个行动后的信号
 signal enemy_action_acted
+## 一个行动检定或执行结束后的信号
+signal action_executed_already
 ## 当前敌人完成所有行动后的信号
 signal enemy_action_phase_ended
 

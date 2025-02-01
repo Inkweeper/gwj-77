@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4f5m57w4eq4v"]
+
+[ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="1_bsppv"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_cross_attack.gd" id="2_vk84q"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_vk84q")
+allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+action_name = "Cross Attack"
+action_type = 0
+range_indication_texture = ExtResource("1_bsppv")

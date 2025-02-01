@@ -4,6 +4,7 @@ func initialize():
 	pass
 
 func enter():
+	
 	var player: Player = get_tree().get_first_node_in_group("player")
 	player.morph(Player.Form.CHANGELING)
 	transitioned.emit(self,"PlayerTurnStart")

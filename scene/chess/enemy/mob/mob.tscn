@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://0v45a5fulmc2"]
+[gd_scene load_steps=7 format=3 uid="uid://0v45a5fulmc2"]
 
 [ext_resource type="PackedScene" uid="uid://cmwuag3cvwlkb" path="res://scene/chess/enemy/enemy.tscn" id="1_4jrwy"]
 [ext_resource type="Script" path="res://scene/chess/enemy/mob/mob.gd" id="2_5x1xq"]
 [ext_resource type="Texture2D" uid="uid://bnaqhgmuf2sga" path="res://asset/texture/male rogue.png" id="3_g27dn"]
 [ext_resource type="Script" path="res://resource/action/action.gd" id="3_mrd3g"]
+[ext_resource type="Resource" uid="uid://c4f5m57w4eq4v" path="res://resource/action/enemy_action/enemy_action_res/enemy_cross_attack.tres" id="4_b3s8i"]
 [ext_resource type="Resource" uid="uid://cqeqx7b7ud2jk" path="res://resource/action/enemy_action/enemy_action_res/approach.tres" id="4_rx4cs"]
 
 [node name="Mob" instance=ExtResource("1_4jrwy")]
 script = ExtResource("2_5x1xq")
-action_list = Array[ExtResource("3_mrd3g")]([ExtResource("4_rx4cs")])
+action_list = Array[ExtResource("3_mrd3g")]([ExtResource("4_b3s8i"), ExtResource("4_rx4cs")])
 action_priority = 0
 chess_name = "Mob"
 

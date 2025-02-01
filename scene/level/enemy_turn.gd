@@ -26,6 +26,7 @@ func update(delta:float):
 
 func _on_an_enemy_completed_action():
 	if enemy_list.is_empty():
+		await get_tree().create_timer(0.2).timeout
 		#transitioned.emit(self, "PlayerTurnStart")
 		transitioned.emit(self, "TurnEnding")
 		return

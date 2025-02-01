@@ -6,6 +6,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_wior5")
+allowed_gridpos = Array[Vector2i]([])
 action_name = "Approach"
 action_type = 1
 range_indication_texture = ExtResource("1_ufucl")

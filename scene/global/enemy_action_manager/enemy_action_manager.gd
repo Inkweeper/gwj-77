@@ -29,28 +29,42 @@ func register_enemy(enemy : Enemy):
 	
 ## 处理敌人行动
 func process_enemy_action():
-	await get_tree().create_timer(0.4).timeout
-	# 是否可以行动, 行动了没有? 如果没有, 那么就不必要再行动了
-	
-	# 首先判断能否攻击. 如果可以, 这个敌人本回合的事实际已经做完了, 所以可以发送信号和return
-	# TODO
-	
+	await get_tree().create_timer(0.1).timeout
+	enemy_had_acted = false
+	# 首先判断能否攻击. 如果可以, 这个敌人本回合的事实际已经做完了, 所以可以结束和return
+	var attack_action : EnemyAction = attack_action_list.pop_front()
+	if attack_action != null:
+		attack_action = attack_action as EnemyAction
+		if attack_action.if_can_execute():
+			attack_action.if_execute()
+			await EventBus.action_executed_already
+			enemy_had_acted = true
+		if enemy_had_acted:
+			enemy_action_phase_end()
+			return
+		else:
+			attack_action_list.push_front(attack_action)
 	# 接着判断和执行移动
 	var move_action : EnemyAction = move_action_list.pop_front()
-	if not move_action:
+	if move_action != null:
+		move_action = move_action as EnemyAction
+		if move_action.if_can_execute():
+			move_action.if_execute()
+			await EventBus.action_executed_already
+			enemy_had_acted = true
+		if enemy_had_acted:
+			EventBus.enemy_action_acted.emit()
+			return
+		else :
+			enemy_action_phase_end()
+			return
+	else:
 		enemy_action_phase_end()
-		return
-	enemy_had_acted = move_action.if_execute()
-	if enemy_had_acted:
-		EventBus.enemy_action_acted.emit()
-		return
-	else :
-		enemy_action_phase_end()
-		print("enemy valid actions all executed")
 		return
 
 ## 当前敌人所有行动执行结束时调用
 func enemy_action_phase_end():
+	await get_tree().create_timer(0.1).timeout
 	clear()
 	EventBus.enemy_action_phase_ended.emit()
 	

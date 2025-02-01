@@ -91,7 +91,7 @@ func ask_for_morph():
 	
 	
 	var tween : Tween = create_tween()
-	tween.tween_property(transform_select_panel, "position", Vector2(352,528),0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(transform_select_panel, "position", Vector2(352,528),0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	
 	EventBus.form_decided.connect(decide_morph)
@@ -108,7 +108,7 @@ func decide_morph(form:Player.Form):
 	var player : Player = get_tree().get_first_node_in_group("player")
 	
 	var tween : Tween = create_tween()
-	tween.tween_property(transform_select_panel, "position", Vector2(1152,528),0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tween.tween_property(transform_select_panel, "position", Vector2(1152,528),0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	await tween.finished
 	
 	var morph_button_container: Container = $CanvasLayer/TransformSelectPanel/VBoxContainer/HBoxContainer
@@ -145,7 +145,7 @@ func show_action_list():
 	action_button_container.add_child(end_turn_button)
 	
 	var tween : Tween = create_tween()
-	tween.tween_property(action_select_panel, "position", Vector2(352,528),0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(action_select_panel, "position", Vector2(352,528),0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	await tween.finished
 
 ## 隐藏行动列表ui
@@ -156,7 +156,7 @@ func hide_action_list():
 			child.disable_button()
 	
 	var tween : Tween = create_tween()
-	tween.tween_property(action_select_panel, "position", Vector2(1152,528),0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tween.tween_property(action_select_panel, "position", Vector2(1152,528),0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	await tween.finished
 	
 	for child in action_button_container.get_children():

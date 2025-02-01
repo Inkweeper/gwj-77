@@ -5,7 +5,7 @@ func initialize():
 	pass
 
 func enter():
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.1).timeout
 	GlobalValue.level.register_chess_status_this_turn()
 	GlobalValue.level.ask_for_morph()
 	# HACK
