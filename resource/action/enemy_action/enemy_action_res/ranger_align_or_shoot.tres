@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyAction" load_steps=2 format=3 uid="uid://dg2xngw12r88y"]
+
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action.gd" id="1_gfu31"]
+
+[resource]
+script = ExtResource("1_gfu31")
+allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+action_name = "Align or Shoot"
+action_type = 1

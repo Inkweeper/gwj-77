@@ -20,11 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://np2oeh8f5dn6" path="res://asset/texture/aiming-grids/gwj-77-aiming-1.png" id="12_lrj5n"]
 [ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="12_m2kid"]
 [ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/approach.gd" id="13_8v4cb"]
-[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_cross_attack.gd" id="13_ey674"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_melee_attack.gd" id="13_ey674"]
 [ext_resource type="Resource" uid="uid://e3p0mdbp06eb" path="res://resource/action/player_action/player_action_res/player_cross_move.tres" id="13_nulru"]
 [ext_resource type="Script" path="res://resource/action/player_action/player_action_res/player_attack.gd" id="15_uys58"]
 
-[sub_resource type="Resource" id="Resource_yddb1"]
+[sub_resource type="Resource" id="Resource_k377b"]
 resource_local_to_scene = true
 script = ExtResource("15_uys58")
 allowed_target_grids = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -32,7 +32,7 @@ action_name = "Cross Attack"
 action_type = 0
 range_indication_texture = ExtResource("12_m2kid")
 
-[sub_resource type="Resource" id="Resource_lb1gg"]
+[sub_resource type="Resource" id="Resource_ispr1"]
 resource_local_to_scene = true
 script = ExtResource("13_8v4cb")
 allowed_gridpos = Array[Vector2i]([])
@@ -40,7 +40,7 @@ action_name = "Approach"
 action_type = 1
 range_indication_texture = ExtResource("12_lrj5n")
 
-[sub_resource type="Resource" id="Resource_unohw"]
+[sub_resource type="Resource" id="Resource_tbupo"]
 resource_local_to_scene = true
 script = ExtResource("13_ey674")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -48,7 +48,7 @@ action_name = "Cross Attack"
 action_type = 0
 range_indication_texture = ExtResource("12_m2kid")
 
-[sub_resource type="Resource" id="Resource_jed2r"]
+[sub_resource type="Resource" id="Resource_y3tum"]
 resource_local_to_scene = true
 script = ExtResource("13_ey674")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -56,7 +56,7 @@ action_name = "Cross Attack"
 action_type = 0
 range_indication_texture = ExtResource("12_m2kid")
 
-[sub_resource type="Resource" id="Resource_rrw1m"]
+[sub_resource type="Resource" id="Resource_n6p2q"]
 resource_local_to_scene = true
 script = ExtResource("13_8v4cb")
 allowed_gridpos = Array[Vector2i]([])
@@ -136,16 +136,16 @@ script = ExtResource("9_npx4o")
 
 [node name="Player" parent="ChessContainer" instance=ExtResource("1_uxb30")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
-changeling_action_list = Array[ExtResource("12_cyb6r")]([ExtResource("13_nulru"), SubResource("Resource_yddb1")])
-turtle_action_list = Array[ExtResource("12_cyb6r")]([ExtResource("13_nulru"), SubResource("Resource_yddb1")])
+changeling_action_list = Array[ExtResource("12_cyb6r")]([ExtResource("13_nulru"), SubResource("Resource_k377b")])
+turtle_action_list = Array[ExtResource("12_cyb6r")]([ExtResource("13_nulru"), SubResource("Resource_k377b")])
 
 [node name="Scout" parent="ChessContainer" instance=ExtResource("11_00fep")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
-action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_lb1gg"), SubResource("Resource_lb1gg"), SubResource("Resource_unohw")])
+action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_ispr1"), SubResource("Resource_ispr1"), SubResource("Resource_tbupo")])
 
 [node name="Mob" parent="ChessContainer" instance=ExtResource("9_a6agu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
-action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_jed2r"), SubResource("Resource_rrw1m")])
+action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_y3tum"), SubResource("Resource_n6p2q")])
 
 [node name="Chessboard" type="GridMap" parent="."]
 mesh_library = ExtResource("1_bvi4l")

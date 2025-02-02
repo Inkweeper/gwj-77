@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3kb2mc58a30s"]
+
+[ext_resource type="Script" path="res://scene/chess/enemy/ranger/arrow/arrow.gd" id="1_pbrn0"]
+
+[sub_resource type="Curve" id="Curve_b543j"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_dgtcc"]
+radius = 0.2
+radial_steps = 4
+sections = 2
+curve = SubResource("Curve_b543j")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0pmi2"]
+top_radius = 0.05
+bottom_radius = 0.05
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_vjllh"]
+size = Vector3(0.001, 0.4, 0.4)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e8hvj"]
+radius = 0.02
+height = 0.719039
+
+[node name="Arrow" type="Node3D"]
+script = ExtResource("1_pbrn0")
+
+[node name="Skin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120309)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Skin"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TubeTrailMesh_dgtcc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Skin"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.12445)
+mesh = SubResource("CylinderMesh_0pmi2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Skin"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.95281)
+mesh = SubResource("BoxMesh_vjllh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Skin"]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 1.91069e-15, -4.37114e-08, 0, -1, -4.37114e-08, 0, 0, -1.95281)
+mesh = SubResource("BoxMesh_vjllh")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.276569)
+shape = SubResource("CapsuleShape3D_e8hvj")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

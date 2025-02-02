@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4f5m57w4eq4v"]
 
 [ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="1_bsppv"]
-[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_cross_attack.gd" id="2_vk84q"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_melee_attack.gd" id="2_vk84q"]
 
 [resource]
 resource_local_to_scene = true
