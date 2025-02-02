@@ -50,9 +50,17 @@ func get_hit():
 		hit_can_take_count -= 1
 		get_hit_bounce()
 	else:
+		EventBus.player_killed.emit()
 		get_hit_bounce()
+		await hit_bounce_finished
+		await get_tree().create_timer(0.1).timeout
 		EventBus.defeated.emit()
-
+		var tween_flip := create_tween()
+		tween_flip.tween_property($MeshInstance3D, "rotation",Vector3(0,0,PI),0.3).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+		#tween_flip.set_parallel(true)
+		#tween_flip.tween_property(self, "position", Vector3(position.x,2.0,position.z),0.1)
+		
+		
 func get_action_list()->Array:
 	match current_form:
 		Form.CHANGELING:

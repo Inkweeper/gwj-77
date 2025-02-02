@@ -7,7 +7,6 @@ func if_can_execute()->bool:
 		if grid is Vector2i:
 			var grid_to_check : Vector2i = grid + gridpos
 			if grid_to_check == player_gridpos:
-				print("can attack! ")
 				return true
 	return false
 

@@ -3,7 +3,7 @@ class_name Arrow
 
 signal hit_player
 
-const speed : float = 20.0
+const speed : float = 25.0
 
 var is_flying: bool = true
 

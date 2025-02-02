@@ -17,5 +17,8 @@ signal action_executed_already
 ## 当前敌人完成所有行动后的信号
 signal enemy_action_phase_ended
 
+## 先于失败发出, 立刻停止所有敌人行动的处理
+signal player_killed
+
 signal victory
 signal defeated

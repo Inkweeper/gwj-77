@@ -6,6 +6,7 @@ func initialize():
 
 func enter():
 	print("failure")
+	$"../../WinLoseInfoLayer/LosePanel".activate()
 	pass
 
 func exit():

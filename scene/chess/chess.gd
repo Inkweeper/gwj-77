@@ -1,6 +1,8 @@
 extends Node3D
 class_name Chess
 
+signal hit_bounce_finished
+
 # / export vars
 @export var chess_name : String
 # /
@@ -29,8 +31,16 @@ func get_hit_bounce():
 	var tween : Tween = create_tween()
 	tween.tween_property(mesh_instance_3d,"scale",Vector3(1.0,1.0,1.0),0.4).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	await tween.finished
+	hit_bounce_finished.emit()
 	pass
 
 func get_hit():
+	$Area3D.set_deferred("monitorable",false)
+	await get_tree().create_timer(0.0).timeout
 	get_hit_bounce()
+	await hit_bounce_finished
+	var tween_flip := create_tween()
+	tween_flip.tween_property($MeshInstance3D, "rotation",Vector3(0,0,PI),0.3).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	await tween_flip.finished
+	await get_tree().create_timer(0.1).timeout
 	queue_free()
