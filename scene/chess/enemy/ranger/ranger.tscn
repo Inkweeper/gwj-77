@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://day8ahv5hauxk"]
+[gd_scene load_steps=6 format=3 uid="uid://day8ahv5hauxk"]
 
 [ext_resource type="PackedScene" uid="uid://cmwuag3cvwlkb" path="res://scene/chess/enemy/enemy.tscn" id="1_7o8kb"]
 [ext_resource type="Script" path="res://scene/chess/enemy/ranger/ranger.gd" id="2_po7o3"]
+[ext_resource type="Script" path="res://resource/action/action.gd" id="3_30p7s"]
 [ext_resource type="Texture2D" uid="uid://c4hfsoayhy2tk" path="res://asset/texture/male ranger.png" id="3_gvy8d"]
+[ext_resource type="Resource" uid="uid://dg2xngw12r88y" path="res://resource/action/enemy_action/enemy_action_res/ranger_align_or_shoot.tres" id="4_oqhdt"]
 
 [node name="Ranger" instance=ExtResource("1_7o8kb")]
 script = ExtResource("2_po7o3")
+action_list = Array[ExtResource("3_30p7s")]([ExtResource("4_oqhdt")])
 action_priority = 0
 chess_name = "Ranger"
 
