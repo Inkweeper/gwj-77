@@ -27,6 +27,11 @@ var current_transform_permissions : Array[Player.Form] = []
 var chessboard_history_list : Array[ChessboardHistory] = []
 var chessboard_history_index : int = 0
 
+## 当玩家按下倒带按钮时发出,由状态机判断当前情况并执行正确的倒带操作
+signal rewind_request
+
+signal failure_rewind_request
+
 func _ready() -> void:
 	GlobalValue.level = self
 	statemachine.initialize()

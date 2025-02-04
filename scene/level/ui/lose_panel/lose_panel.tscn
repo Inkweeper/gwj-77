@@ -46,16 +46,19 @@ layout_mode = 2
 theme_override_constants/separation = -200
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="RetryButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 20
 text = "Retry"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="RewindButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 20
 text = "Rewind"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RewindButton" to="." method="_on_rewind_button_pressed"]

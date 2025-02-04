@@ -9,7 +9,6 @@
 [node name="Ranger" instance=ExtResource("1_7o8kb")]
 script = ExtResource("2_po7o3")
 action_list = Array[ExtResource("3_30p7s")]([ExtResource("4_oqhdt")])
-action_priority = 0
 chess_name = "Ranger"
 
 [node name="Sprite3D" parent="MeshInstance3D" index="0"]

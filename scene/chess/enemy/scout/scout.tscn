@@ -10,7 +10,6 @@
 [node name="Scout" instance=ExtResource("1_or1ur")]
 script = ExtResource("2_3iyno")
 action_list = Array[ExtResource("2_iky2e")]([ExtResource("3_ewrhq"), ExtResource("3_ewrhq"), ExtResource("5_4vccv")])
-action_priority = 0
 chess_name = "Scout"
 
 [node name="Sprite3D" parent="MeshInstance3D" index="0"]
