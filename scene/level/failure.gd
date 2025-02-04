@@ -7,7 +7,6 @@ func initialize():
 	pass
 
 func enter():
-	print("failure")
 	$"../../WinLoseInfoLayer/LosePanel".activate()
 	pass
 
@@ -18,5 +17,9 @@ func update(delta:float):
 	pass
 
 func _on_rewind_request():
+	if state_machine.current_state != self:
+		return
 	GlobalValue.level.rewind_to_turn_start()
+	$"../../WinLoseInfoLayer/LosePanel".deactivate()
+	transitioned.emit(self,"RewindTurnStart")
 	pass

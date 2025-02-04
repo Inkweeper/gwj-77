@@ -16,7 +16,7 @@ changeling_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("4_xpo7t"), 
 turtle_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("4_xpo7t"), ExtResource("5_n80rs")])
 bat_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("5_bytx7"), ExtResource("7_ue4lk")])
 slime_action_list = Array[ExtResource("3_6j6r7")]([ExtResource("6_wimgl"), ExtResource("6_wimgl")])
-chess_name = "player"
+chess_name = "Player"
 
 [node name="Sprite3D" parent="MeshInstance3D" index="0"]
 texture = ExtResource("3_eipt5")

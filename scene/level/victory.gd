@@ -5,7 +5,6 @@ func initialize():
 	pass
 
 func enter():
-	print("victory! ")
 	$"../../WinLoseInfoLayer/WinPanel".activate()
 	pass
 

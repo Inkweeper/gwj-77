@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cypaufxeaoj1p" path="res://scene/chess/player/player.tscn" id="1_uxb30"]
 [ext_resource type="Script" path="res://scene/level/level.gd" id="1_vsp8c"]
 [ext_resource type="Script" path="res://class_definition/node/statemachine/statemachine.gd" id="2_6orld"]
-[ext_resource type="Script" path="res://class_definition/node/statemachine/state.gd" id="3_bnaqq"]
 [ext_resource type="Script" path="res://scene/level/level_beginning.gd" id="3_eq5bl"]
 [ext_resource type="Script" path="res://scene/level/player_turn_start.gd" id="4_mgmdw"]
+[ext_resource type="Script" path="res://scene/level/rewind_turn_start.gd" id="5_kxuco"]
 [ext_resource type="Script" path="res://scene/level/player_turn.gd" id="6_cebi6"]
 [ext_resource type="Script" path="res://scene/level/enemy_turn.gd" id="7_300kb"]
 [ext_resource type="Script" path="res://scene/level/turn_ending.gd" id="8_7b3oj"]
@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://b5nq26b3hu85j" path="res://scene/level/ui/win_panel/win_panel.tscn" id="26_5xys2"]
 [ext_resource type="PackedScene" uid="uid://jah7vmm6n8mk" path="res://scene/level/ui/lose_panel/lose_panel.tscn" id="27_xv2s1"]
 
-[sub_resource type="Resource" id="Resource_1aakg"]
+[sub_resource type="Resource" id="Resource_xijvq"]
 resource_local_to_scene = true
 script = ExtResource("15_uys58")
 allowed_target_grids = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -36,7 +36,7 @@ action_name = "Cross Attack"
 action_type = 0
 range_indication_texture = ExtResource("12_m2kid")
 
-[sub_resource type="Resource" id="Resource_cg0a7"]
+[sub_resource type="Resource" id="Resource_uhnb7"]
 resource_local_to_scene = true
 script = ExtResource("13_8v4cb")
 allowed_gridpos = Array[Vector2i]([])
@@ -44,7 +44,7 @@ action_name = "Approach"
 action_type = 1
 range_indication_texture = ExtResource("12_lrj5n")
 
-[sub_resource type="Resource" id="Resource_osegd"]
+[sub_resource type="Resource" id="Resource_g4b1q"]
 resource_local_to_scene = true
 script = ExtResource("13_ey674")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -52,7 +52,7 @@ action_name = "Cross Attack"
 action_type = 0
 range_indication_texture = ExtResource("12_m2kid")
 
-[sub_resource type="Resource" id="Resource_swelm"]
+[sub_resource type="Resource" id="Resource_52wgd"]
 resource_local_to_scene = true
 script = ExtResource("13_ey674")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -60,7 +60,7 @@ action_name = "Cross Attack"
 action_type = 0
 range_indication_texture = ExtResource("12_m2kid")
 
-[sub_resource type="Resource" id="Resource_keyfa"]
+[sub_resource type="Resource" id="Resource_ruaea"]
 resource_local_to_scene = true
 script = ExtResource("13_8v4cb")
 allowed_gridpos = Array[Vector2i]([])
@@ -68,7 +68,7 @@ action_name = "Approach"
 action_type = 1
 range_indication_texture = ExtResource("12_lrj5n")
 
-[sub_resource type="Resource" id="Resource_4np7s"]
+[sub_resource type="Resource" id="Resource_fykni"]
 resource_local_to_scene = true
 script = ExtResource("23_mru62")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -126,7 +126,7 @@ script = ExtResource("3_eq5bl")
 script = ExtResource("4_mgmdw")
 
 [node name="RewindTurnStart" type="Node" parent="Statemachine"]
-script = ExtResource("3_bnaqq")
+script = ExtResource("5_kxuco")
 
 [node name="PlayerTurn" type="Node" parent="Statemachine"]
 script = ExtResource("6_cebi6")
@@ -147,20 +147,20 @@ script = ExtResource("9_npx4o")
 
 [node name="Player" parent="ChessContainer" instance=ExtResource("1_uxb30")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
-changeling_action_list = Array[ExtResource("12_cyb6r")]([ExtResource("13_nulru"), SubResource("Resource_1aakg")])
-turtle_action_list = Array[ExtResource("12_cyb6r")]([ExtResource("13_nulru"), SubResource("Resource_1aakg")])
+changeling_action_list = Array[ExtResource("12_cyb6r")]([ExtResource("13_nulru"), SubResource("Resource_xijvq")])
+turtle_action_list = Array[ExtResource("12_cyb6r")]([ExtResource("13_nulru"), SubResource("Resource_xijvq")])
 
 [node name="Scout" parent="ChessContainer" instance=ExtResource("11_00fep")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
-action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_cg0a7"), SubResource("Resource_cg0a7"), SubResource("Resource_osegd")])
+action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_uhnb7"), SubResource("Resource_uhnb7"), SubResource("Resource_g4b1q")])
 
 [node name="Mob" parent="ChessContainer" instance=ExtResource("9_a6agu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 10)
-action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_swelm"), SubResource("Resource_keyfa")])
+action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_52wgd"), SubResource("Resource_ruaea")])
 
 [node name="Ranger" parent="ChessContainer" instance=ExtResource("22_r5q1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 22)
-action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_4np7s")])
+action_list = Array[ExtResource("11_k3vd0")]([SubResource("Resource_fykni")])
 
 [node name="Chessboard" type="GridMap" parent="."]
 mesh_library = ExtResource("1_bvi4l")
@@ -176,6 +176,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(-0.866025, -0.383022, 0.321394, 0, 0.642788, 0.766044, -0.5, 0.663414, -0.55667, 0, 0, 0)
 light_energy = 0.6
 shadow_enabled = true
+directional_shadow_blend_splits = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wqh2g")
@@ -196,11 +197,14 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/InformationPanel"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/InformationPanel/VBoxContainer"]
+[node name="Title" type="Label" parent="CanvasLayer/InformationPanel/VBoxContainer"]
 layout_mode = 2
 text = "Information"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Content" type="Label" parent="CanvasLayer/InformationPanel/VBoxContainer"]
+layout_mode = 2
 
 [node name="TransformSelectPanel" type="PanelContainer" parent="CanvasLayer"]
 visible = false
@@ -227,6 +231,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionSelectPanel" type="PanelContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -249,6 +254,17 @@ text = "Choose Your Action"
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="IngameRewindButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -99.0
+offset_top = 10.0
+offset_right = -13.0
+offset_bottom = 70.0
+grow_horizontal = 0
+text = "Rewind"
+
 [node name="WinLoseInfoLayer" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -257,3 +273,7 @@ visible = false
 
 [node name="LosePanel" parent="WinLoseInfoLayer" instance=ExtResource("27_xv2s1")]
 visible = false
+
+[connection signal="pressed" from="CanvasLayer/IngameRewindButton" to="Statemachine/PlayerTurnStart" method="_on_ingame_rewind_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/IngameRewindButton" to="Statemachine/RewindTurnStart" method="_on_ingame_rewind_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/IngameRewindButton" to="Statemachine/PlayerTurn" method="_on_ingame_rewind_button_pressed"]

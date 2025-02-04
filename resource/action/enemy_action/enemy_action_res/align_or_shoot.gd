@@ -85,7 +85,7 @@ func if_shoot_blocked(executer_gridpos:Vector2i, player_gridpos:Vector2i)->bool:
 	var direction := Vector2i(Vector2(player_gridpos-executer_gridpos).normalized())
 	for i in range(100):
 		check_gridpos+=direction
-		var chess := GlobalValue.level.check_gridpos_occupied(check_gridpos)
+		var chess : Chess = GlobalValue.level.check_gridpos_occupied(check_gridpos)
 		if chess and chess is Player:
 			return false
 		elif chess and chess is not Player:

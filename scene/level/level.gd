@@ -25,12 +25,11 @@ const CHESSBOARD_GRID_SIZE : Vector2 = Vector2(4.0 , 4.0)
 
 var current_transform_permissions : Array[Player.Form] = []
 var chessboard_history_list : Array[ChessboardHistory] = []
-var chessboard_history_index : int = 0
+
 
 ## 当玩家按下倒带按钮时发出,由状态机判断当前情况并执行正确的倒带操作
 signal rewind_request
 
-signal failure_rewind_request
 
 func _ready() -> void:
 	GlobalValue.level = self
@@ -44,8 +43,12 @@ func _process(delta: float) -> void:
 
 ## 游戏开始时的预设定
 func new_level():
+	chessboard_history_list.clear()
 	current_transform_permissions = total_transform_permissions.duplicate()
-	camera_3d.max_pos_bounds = Vector2(chessboard_size.x*4.0, chessboard_size.y*4.0)
+	camera_3d.max_pos_bounds = Vector2(chessboard_size.x*4.0, chessboard_size.y*6.0)
+	camera_3d.position.y = 20.0
+	camera_3d.position.x = camera_3d.min_pos_bounds.x + 0.4*(camera_3d.max_pos_bounds.x-camera_3d.min_pos_bounds.x)
+	camera_3d.position.z = camera_3d.min_pos_bounds.y + 0.6*(camera_3d.max_pos_bounds.y-camera_3d.min_pos_bounds.y)
 	pass
 
 ## 记录本回合的棋子状态和剩余可变形列表
@@ -67,7 +70,7 @@ func register_chess_status_this_turn():
 	
 	chessboard_history_list.append(chessboard_history)
 	
-	chessboard_history_index += 1
+
 
 
 # /PlayerTurnStart
@@ -79,6 +82,8 @@ func ask_for_morph():
 	var morph_button_container: HBoxContainer = $CanvasLayer/TransformSelectPanel/VBoxContainer/HBoxContainer
 	
 	# add transform buttons
+	for child in morph_button_container.get_children():
+		child.queue_free()
 	
 	transform_select_panel.show()
 	
@@ -99,7 +104,8 @@ func ask_for_morph():
 	tween.tween_property(transform_select_panel, "position", Vector2(352,524),0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	
-	EventBus.form_decided.connect(decide_morph)
+	if not EventBus.form_decided.is_connected(decide_morph):
+		EventBus.form_decided.connect(decide_morph)
 	# HACK
 	
 	pass
@@ -139,6 +145,9 @@ func show_action_list():
 	action_select_panel.show()
 	var action_button_container : HBoxContainer = $CanvasLayer/ActionSelectPanel/VBoxContainer/HBoxContainer
 	
+	for child in action_button_container.get_children():
+		child.queue_free()
+	
 	for player_action in player_action_list:
 		if player_action is PlayerAction:
 			var button : PlayerActionSelectButton = preload("res://scene/level/ui/player_action_select_button/player_action_select_button.tscn").instantiate()
@@ -169,13 +178,41 @@ func hide_action_list():
 	action_select_panel.hide()
 # /
 
-# TODO
+## 将游戏场景恢复到本回合开始时的状态,根据历史表摆放好棋子即可
 func rewind_to_turn_start():
-	pass
+	for chess in chess_container.get_children():
+		if chess is Chess:
+			chess.queue_free()
+	var chess_board_history : ChessboardHistory = chessboard_history_list.back() as ChessboardHistory
+	var transform_permissions := chess_board_history.transform_permissions
+	current_transform_permissions = transform_permissions
+	var chess_status_list := chess_board_history.chess_status_list
+	for chess_status in chess_status_list:
+		var status := chess_status as ChessStatus
+		var chess : Chess = GlobalValue.chess_configuration[status.chess_name].instantiate()
+		chess_container.add_child(chess)
+		chess.gridpos = status.grid_pos
+		chess.face_to = status.face_to
 
-# TODO
+## 将游戏场景恢复到上一个回合开始时的状态,根据历史表摆放好棋子即可
 func rewind_to_last_turn():
-	pass
+	if chessboard_history_list.size()==1:
+		rewind_to_turn_start()
+		return
+	for chess in chess_container.get_children():
+		if chess is Chess:
+			chess.queue_free()
+	chessboard_history_list.pop_back()
+	var chess_board_history : ChessboardHistory = chessboard_history_list.back() as ChessboardHistory
+	var transform_permissions := chess_board_history.transform_permissions
+	current_transform_permissions = transform_permissions
+	var chess_status_list := chess_board_history.chess_status_list
+	for chess_status in chess_status_list:
+		var status := chess_status as ChessStatus
+		var chess : Chess = GlobalValue.chess_configuration[status.chess_name].instantiate()
+		chess_container.add_child(chess)
+		chess.gridpos = status.grid_pos
+		chess.face_to = status.face_to
 
 ## 将gridpos:Vector2i转换为gridmap的Vector3i
 func grid_pos_to_grid_map_pos(grid_pos : Vector2i)->Vector3i:

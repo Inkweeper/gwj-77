@@ -25,3 +25,10 @@ func _on_player_end_turn():
 	GlobalValue.level.hide_action_list()
 	PlayerActionManager.deactivate()
 	transitioned.emit(self,"EnemyTurn")
+
+
+func _on_ingame_rewind_button_pressed() -> void:
+	if state_machine.current_state != self:
+		return
+	GlobalValue.level.rewind_to_turn_start()
+	transitioned.emit(self,"RewindTurnStart")

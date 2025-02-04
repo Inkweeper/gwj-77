@@ -1,17 +1,14 @@
 extends State
+# RewindTurnStart
 
 func initialize():
 	EventBus.transform_ready.connect(_on_transform_ready)
 	pass
 
 func enter():
-	GlobalValue.level.register_chess_status_this_turn()
+	GlobalValue.level.hide_action_list()
+	await get_tree().create_timer(0.1).timeout
 	GlobalValue.level.ask_for_morph()
-	# HACK
-	#await get_tree().create_timer(3).timeout
-	
-	# HACK
-	#transitioned.emit(self, "PlayerTurn")
 	pass
 
 func exit():

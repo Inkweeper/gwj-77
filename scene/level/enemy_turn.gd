@@ -14,6 +14,7 @@ func initialize():
 	pass
 
 func enter():
+	$"../../CanvasLayer/IngameRewindButton".modulate = Color(0.3, 0.3, 0.3)
 	defeated = false
 	enemy_list.clear()
 	for child in GlobalValue.level.chess_container.get_children():
@@ -25,6 +26,7 @@ func enter():
 	_on_an_enemy_completed_action()
 
 func exit():
+	$"../../CanvasLayer/IngameRewindButton".modulate = Color(1, 1, 1)
 	pass
 
 func update(delta:float):

@@ -5,6 +5,7 @@ signal hit_bounce_finished
 
 # / export vars
 @export var chess_name : String
+@export_multiline var chess_info:String
 # /
 
 # / node references
@@ -20,7 +21,11 @@ var gridpos : Vector2i :
 		var coord_3d : Vector3i = level.chessboard.local_to_map(position)
 		result = Vector2i(coord_3d.x, coord_3d.z)
 		return result
-	
+	set(v):
+		var level : Level = GlobalValue.level
+		position = level.grid_pos_to_position(v)
+
+
 # HACK
 #func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("f1"):

@@ -6,6 +6,9 @@ func activate():
 	show()
 	mouse_filter = MouseFilter.MOUSE_FILTER_STOP
 
+func deactivate():
+	mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
+	hide()
 
 func _on_retry_button_pressed() -> void:
 	if not get_tree().current_scene == GlobalValue.level:

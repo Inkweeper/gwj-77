@@ -1,7 +1,7 @@
 extends Camera3D
 class_name LevelCamera
 
-var min_pos_bounds : Vector2 = Vector2(-4,-4)
+var min_pos_bounds : Vector2 = Vector2(-4,0)
 var max_pos_bounds : Vector2 = Vector2(32,32)
 
 
