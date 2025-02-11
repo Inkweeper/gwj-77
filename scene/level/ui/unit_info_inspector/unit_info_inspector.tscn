@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2c3qxqpaf83k"]
+
+[ext_resource type="Texture2D" uid="uid://o3jsx0yb0pf" path="res://asset/texture/changeling.png" id="1_1o8gj"]
+
+[node name="UnitInfoInspector" type="VBoxContainer"]
+alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="UnitInfo" type="VBoxContainer" parent="Info"]
+layout_mode = 2
+
+[node name="UnitTitle" type="Label" parent="Info/UnitInfo"]
+layout_mode = 2
+text = "- Unit -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Info/UnitInfo"]
+custom_minimum_size = Vector2(0, 144)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/UnitInfo/CenterContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="ProfileContainer" type="VBoxContainer" parent="Info/UnitInfo/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Info/UnitInfo/CenterContainer/HBoxContainer/ProfileContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_1o8gj")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info/UnitInfo/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitName" type="Label" parent="Info/UnitInfo/CenterContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnitDes1" type="Label" parent="Info/UnitInfo/CenterContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
+theme_override_font_sizes/font_size = 12
+text = "字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字"
+autowrap_mode = 3
+
+[node name="ActionInfo" type="VBoxContainer" parent="Info"]
+layout_mode = 2
+
+[node name="ActionTitle" type="Label" parent="Info/ActionInfo"]
+layout_mode = 2
+text = "- Action -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="HBoxContainer" parent="Info/ActionInfo"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="ActionEntryContainer" type="VBoxContainer" parent="Info/ActionInfo/CenterContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="DescriptionInfo" type="VBoxContainer" parent="Info"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/DescriptionInfo"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Info/DescriptionInfo/HBoxContainer"]
+custom_minimum_size = Vector2(240, 220)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
+theme_override_font_sizes/font_size = 12
+text = "字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字"
+autowrap_mode = 3
