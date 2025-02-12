@@ -16,10 +16,12 @@ func initialize():
 func enter():
 	$"../../CanvasLayer/IngameRewindButton".modulate = Color(0.3, 0.3, 0.3)
 	defeated = false
+	await get_tree().create_timer(0.5).timeout
 	enemy_list.clear()
 	for child in GlobalValue.level.chess_container.get_children():
 		if child is Enemy:
-			enemy_list.append(child)
+			if child.is_alive:
+				enemy_list.append(child)
 	if enemy_list.is_empty():
 		transitioned.emit(self, "Victory")
 	enemy_list.sort_custom(func(a:Enemy, b:Enemy): return a.action_priority < b.action_priority)

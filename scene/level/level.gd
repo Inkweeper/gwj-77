@@ -294,7 +294,9 @@ func check_gridpos_occupied(gridpos:Vector2i)->Chess:
 	if result.size() == 0:
 		return null
 	else:
-		return result[0].collider.owner as Chess
+		if result[0].collider.owner is Chess:
+			if result[0].collider.owner.is_alive:
+				return result[0].collider.owner as Chess
 	return null
 
 

@@ -7,6 +7,8 @@ func execute(args : Array):
 	if args.size() != 1 or args[0] is not Vector2i:
 		return
 	
+	PlayerActionManager.player_is_acting = true
+	
 	var target_grid_pos : Vector2i = args[0]
 	var level : Level = GlobalValue.level
 	
@@ -15,3 +17,5 @@ func execute(args : Array):
 	var tween : Tween = GlobalValue.create_tween()
 	tween.tween_property(executer,"position",target_pos,0.3)
 	await tween.finished
+	
+	PlayerActionManager.player_is_acting = false

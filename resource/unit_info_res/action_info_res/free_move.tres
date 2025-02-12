@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionInfoRes" load_steps=3 format=3 uid="uid://df4qk6i7jl54f"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_144fa"]
+[ext_resource type="Texture2D" uid="uid://wl3n18adj8lt" path="res://asset/texture/aiming-grids/gwj-77-aiming-2.png" id="2_v7ng6"]
+
+[resource]
+script = ExtResource("1_144fa")
+action_name = "Free Move"
+valid_grid_texture = ExtResource("2_v7ng6")
+action_des = "Free Move_DES"

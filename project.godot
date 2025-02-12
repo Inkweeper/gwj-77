@@ -80,6 +80,10 @@ rmb={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translation_ws/translation_sheet.zh.translation", "res://translation_ws/translation_sheet.en.translation")
+
 [layer_names]
 
 3d_physics/layer_1="default"

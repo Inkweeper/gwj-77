@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionInfoRes" load_steps=3 format=3 uid="uid://byifvr1h1tpcc"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_g7i48"]
+[ext_resource type="Texture2D" uid="uid://np2oeh8f5dn6" path="res://asset/texture/aiming-grids/gwj-77-aiming-1.png" id="2_xawiw"]
+
+[resource]
+script = ExtResource("1_g7i48")
+action_name = "Cross Move"
+valid_grid_texture = ExtResource("2_xawiw")
+action_des = "Cross Move_DES"

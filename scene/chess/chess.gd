@@ -12,7 +12,7 @@ signal hit_bounce_finished
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 
 # /
-
+var is_alive : bool = true
 var face_to : Vector2 = Vector2.DOWN
 var gridpos : Vector2i :
 	get():
@@ -40,6 +40,7 @@ func get_hit_bounce():
 	pass
 
 func get_hit():
+	is_alive = false
 	$Area3D.set_deferred("monitorable",false)
 	await get_tree().create_timer(0.0).timeout
 	get_hit_bounce()

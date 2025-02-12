@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionInfoRes" load_steps=3 format=3 uid="uid://dh7grokt1twej"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_wq34y"]
+[ext_resource type="Texture2D" uid="uid://dn75x10qapxrk" path="res://asset/texture/aiming-grids/gwj-77-aiming-5.png" id="2_y77mx"]
+
+[resource]
+script = ExtResource("1_wq34y")
+action_name = "X Attack"
+valid_grid_texture = ExtResource("2_y77mx")
+action_des = "X Attack_DES"

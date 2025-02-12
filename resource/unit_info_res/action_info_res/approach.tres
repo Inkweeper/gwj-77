@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionInfoRes" load_steps=3 format=3 uid="uid://deyev27yuk0un"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_ds0bl"]
+[ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="2_b20r5"]
+
+[resource]
+script = ExtResource("1_ds0bl")
+action_name = "Approach"
+valid_grid_texture = ExtResource("2_b20r5")
+action_des = "Approach_DES"

@@ -6,6 +6,8 @@ var processing_player_action_select_button : PlayerActionSelectButton = null
 
 var hovered_aim_box : AimBox
 
+var player_is_acting : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_process_unhandled_input(false)

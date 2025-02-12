@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionInfoRes" load_steps=3 format=3 uid="uid://r13hhkt6su0"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_3joui"]
+[ext_resource type="Texture2D" uid="uid://cqmgd2l6om78o" path="res://asset/texture/aiming-grids/gwj-77-aiming-6.png" id="2_orsea"]
+
+[resource]
+script = ExtResource("1_3joui")
+action_name = "Align or Shoot"
+valid_grid_texture = ExtResource("2_orsea")
+action_des = "Align or Shoot_DES"

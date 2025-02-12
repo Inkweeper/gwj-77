@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionInfoRes" load_steps=3 format=3 uid="uid://cpmq58758n3po"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_i43r1"]
+[ext_resource type="Texture2D" uid="uid://dek0s63eop6j6" path="res://asset/texture/aiming-grids/gwj-77-aiming-3.png" id="2_lqljh"]
+
+[resource]
+script = ExtResource("1_i43r1")
+action_name = "X Move"
+valid_grid_texture = ExtResource("2_lqljh")
+action_des = "X Move_DES"
