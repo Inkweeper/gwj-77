@@ -22,3 +22,8 @@ signal player_killed
 
 signal victory
 signal defeated
+
+## 当单位被检视时发出, 给予检视器需要显示的单位信息
+signal inspect_unit_info_res_request(unit_info_res : UnitInfoRes)
+## 当单位不再被检视时发出
+signal stop_inspect_request

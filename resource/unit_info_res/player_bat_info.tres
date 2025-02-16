@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UnitInfoRes" load_steps=6 format=3 uid="uid://cd8vmy24rq8no"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_ni1sm"]
+[ext_resource type="Resource" uid="uid://cpmq58758n3po" path="res://resource/unit_info_res/action_info_res/x_move.tres" id="2_03ukf"]
+[ext_resource type="Resource" uid="uid://dh7grokt1twej" path="res://resource/unit_info_res/action_info_res/x_attack.tres" id="3_xxyw5"]
+[ext_resource type="Script" path="res://resource/unit_info_res/unit_info_res.gd" id="4_kh7fm"]
+[ext_resource type="Texture2D" uid="uid://1wjjsur4n2uf" path="res://asset/texture/giant bat.png" id="5_bylhp"]
+
+[resource]
+script = ExtResource("4_kh7fm")
+unit_profile = ExtResource("5_bylhp")
+unit_name = "蝙蝠"
+des_1 = "BAT_DES_1"
+des_2 = "BAT_DES_2"
+action_info_list = Array[ExtResource("1_ni1sm")]([ExtResource("2_03ukf"), ExtResource("3_xxyw5")])

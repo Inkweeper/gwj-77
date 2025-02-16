@@ -8,3 +8,4 @@
 script = ExtResource("2_qv7pq")
 action_list = Array[ExtResource("3_5csy3")]([])
 action_priority = 0
+unit_info_res = null

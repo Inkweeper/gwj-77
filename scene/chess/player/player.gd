@@ -72,3 +72,17 @@ func get_action_list()->Array:
 		Form.SLIME:
 			return slime_action_list.duplicate(true)
 	return []
+
+func get_unit_info_res()->UnitInfoRes:
+	match current_form:
+		Form.CHANGELING:
+			return preload("res://resource/unit_info_res/player_changeling_info.tres")
+		Form.TURTLE:
+			return preload("res://resource/unit_info_res/player_turtle_info.tres")
+		Form.BAT:
+			return preload("res://resource/unit_info_res/player_bat_info.tres")
+		Form.SLIME:
+			return preload("res://resource/unit_info_res/player_slime_info.tres")
+			
+	push_error("Undefined object extends UnitInfoRes! ")
+	return UnitInfoRes.new()

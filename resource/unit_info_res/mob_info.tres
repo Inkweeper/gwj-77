@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="UnitInfoRes" load_steps=3 format=3 uid="uid://cd8jemqltugss"]
+[gd_resource type="Resource" script_class="UnitInfoRes" load_steps=6 format=3 uid="uid://cd8jemqltugss"]
 
 [ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_4bmkn"]
+[ext_resource type="Resource" uid="uid://deyev27yuk0un" path="res://resource/unit_info_res/action_info_res/approach.tres" id="2_6qrso"]
 [ext_resource type="Script" path="res://resource/unit_info_res/unit_info_res.gd" id="2_n85g7"]
+[ext_resource type="Resource" uid="uid://n3gn3fcr2tch" path="res://resource/unit_info_res/action_info_res/cross_attack.tres" id="3_i3ee6"]
+[ext_resource type="Texture2D" uid="uid://bnaqhgmuf2sga" path="res://asset/texture/male rogue.png" id="5_kw6h4"]
 
 [resource]
 script = ExtResource("2_n85g7")
+unit_profile = ExtResource("5_kw6h4")
 unit_name = "士兵"
 des_1 = "MOB_DES_1"
-des_2 = "MOB_DES_2
-"
-action_info_list = Array[ExtResource("1_4bmkn")]([])
+des_2 = "MOB_DES_2"
+action_info_list = Array[ExtResource("1_4bmkn")]([ExtResource("2_6qrso"), ExtResource("3_i3ee6")])

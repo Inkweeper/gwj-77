@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UnitInfoRes" load_steps=5 format=3 uid="uid://cuhnwdw45aw10"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_fsm65"]
+[ext_resource type="Resource" uid="uid://df4qk6i7jl54f" path="res://resource/unit_info_res/action_info_res/free_move.tres" id="2_61f4v"]
+[ext_resource type="Script" path="res://resource/unit_info_res/unit_info_res.gd" id="4_dv7nb"]
+[ext_resource type="Texture2D" uid="uid://bghsff34uh68l" path="res://asset/texture/green slime.png" id="4_jqd4n"]
+
+[resource]
+script = ExtResource("4_dv7nb")
+unit_profile = ExtResource("4_jqd4n")
+unit_name = "史莱姆"
+des_1 = "SLIME_DES_1"
+des_2 = "SLIME_DES_2"
+action_info_list = Array[ExtResource("1_fsm65")]([ExtResource("2_61f4v"), ExtResource("2_61f4v")])

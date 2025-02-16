@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://hh8neym828v6"]
+[gd_scene load_steps=8 format=3 uid="uid://hh8neym828v6"]
 
 [ext_resource type="PackedScene" uid="uid://cmwuag3cvwlkb" path="res://scene/chess/enemy/enemy.tscn" id="1_or1ur"]
 [ext_resource type="Script" path="res://scene/chess/enemy/scout/scout.gd" id="2_3iyno"]
@@ -6,10 +6,12 @@
 [ext_resource type="Resource" uid="uid://cqeqx7b7ud2jk" path="res://resource/action/enemy_action/enemy_action_res/approach.tres" id="3_ewrhq"]
 [ext_resource type="Resource" uid="uid://c4f5m57w4eq4v" path="res://resource/action/enemy_action/enemy_action_res/enemy_cross_attack.tres" id="5_4vccv"]
 [ext_resource type="Texture2D" uid="uid://1f6yjd51vh0m" path="res://asset/texture/male valkyrie.png" id="5_kc1fa"]
+[ext_resource type="Resource" uid="uid://cyyjm1fxroqok" path="res://resource/unit_info_res/scout_info.tres" id="6_u52sk"]
 
 [node name="Scout" instance=ExtResource("1_or1ur")]
 script = ExtResource("2_3iyno")
 action_list = Array[ExtResource("2_iky2e")]([ExtResource("3_ewrhq"), ExtResource("3_ewrhq"), ExtResource("5_4vccv")])
+unit_info_res = ExtResource("6_u52sk")
 chess_name = "Scout"
 
 [node name="Sprite3D" parent="MeshInstance3D" index="0"]

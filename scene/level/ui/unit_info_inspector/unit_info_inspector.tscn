@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2c3qxqpaf83k"]
+[gd_scene load_steps=3 format=3 uid="uid://d2c3qxqpaf83k"]
 
 [ext_resource type="Texture2D" uid="uid://o3jsx0yb0pf" path="res://asset/texture/changeling.png" id="1_1o8gj"]
+[ext_resource type="Script" path="res://scene/level/ui/unit_info_inspector/unit_info_inspector.gd" id="1_ejrru"]
 
 [node name="UnitInfoInspector" type="VBoxContainer"]
 alignment = 1
+script = ExtResource("1_ejrru")
 
 [node name="Info" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -28,7 +30,7 @@ layout_mode = 2
 [node name="ProfileContainer" type="VBoxContainer" parent="Info/UnitInfo/CenterContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Info/UnitInfo/CenterContainer/HBoxContainer/ProfileContainer"]
+[node name="UnitProfile" type="TextureRect" parent="Info/UnitInfo/CenterContainer/HBoxContainer/ProfileContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("1_1o8gj")
@@ -50,7 +52,7 @@ custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字"
 autowrap_mode = 3
 
@@ -64,7 +66,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CenterContainer" type="HBoxContainer" parent="Info/ActionInfo"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 alignment = 1
 
@@ -79,10 +81,10 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Info/DescriptionInfo/HBoxContainer"]
+[node name="UnitDes2" type="Label" parent="Info/DescriptionInfo/HBoxContainer"]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字"
 autowrap_mode = 3

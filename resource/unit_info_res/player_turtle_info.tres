@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UnitInfoRes" load_steps=6 format=3 uid="uid://da7h4q3fjtwvo"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_rhdem"]
+[ext_resource type="Resource" uid="uid://byifvr1h1tpcc" path="res://resource/unit_info_res/action_info_res/cross_move.tres" id="2_hguie"]
+[ext_resource type="Resource" uid="uid://n3gn3fcr2tch" path="res://resource/unit_info_res/action_info_res/cross_attack.tres" id="3_daij7"]
+[ext_resource type="Script" path="res://resource/unit_info_res/unit_info_res.gd" id="4_4tqse"]
+[ext_resource type="Texture2D" uid="uid://80aq1h0sa7o4" path="res://asset/texture/emerald golem.png" id="5_4jmw7"]
+
+[resource]
+script = ExtResource("4_4tqse")
+unit_profile = ExtResource("5_4jmw7")
+unit_name = "乌龟"
+des_1 = "TURTLE_DES_1"
+des_2 = "TURTLE_DES_2"
+action_info_list = Array[ExtResource("1_rhdem")]([ExtResource("2_hguie"), ExtResource("3_daij7")])

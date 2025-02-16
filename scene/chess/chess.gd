@@ -50,3 +50,7 @@ func get_hit():
 	await tween_flip.finished
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
+
+func get_unit_info_res()->UnitInfoRes:
+	push_error("Undefined object extends UnitInfoRes! ")
+	return UnitInfoRes.new()

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UnitInfoRes" load_steps=5 format=3 uid="uid://48d1d80a36wb"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_1hjyi"]
+[ext_resource type="Resource" uid="uid://r13hhkt6su0" path="res://resource/unit_info_res/action_info_res/align_or_shoot.tres" id="2_rerrx"]
+[ext_resource type="Texture2D" uid="uid://c4hfsoayhy2tk" path="res://asset/texture/male ranger.png" id="4_3q6ve"]
+[ext_resource type="Script" path="res://resource/unit_info_res/unit_info_res.gd" id="4_iwmmi"]
+
+[resource]
+script = ExtResource("4_iwmmi")
+unit_profile = ExtResource("4_3q6ve")
+unit_name = "弓箭手"
+des_1 = "ARCHER_DES_1"
+des_2 = "ARCHER_DES_2"
+action_info_list = Array[ExtResource("1_1hjyi")]([ExtResource("2_rerrx")])

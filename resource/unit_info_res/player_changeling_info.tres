@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UnitInfoRes" load_steps=6 format=3 uid="uid://diuprdayensa1"]
+
+[ext_resource type="Script" path="res://resource/unit_info_res/action_info_res/action_info_res.gd" id="1_ksym7"]
+[ext_resource type="Resource" uid="uid://byifvr1h1tpcc" path="res://resource/unit_info_res/action_info_res/cross_move.tres" id="2_yh6a1"]
+[ext_resource type="Resource" uid="uid://n3gn3fcr2tch" path="res://resource/unit_info_res/action_info_res/cross_attack.tres" id="3_ut5ss"]
+[ext_resource type="Script" path="res://resource/unit_info_res/unit_info_res.gd" id="4_bydb0"]
+[ext_resource type="Texture2D" uid="uid://o3jsx0yb0pf" path="res://asset/texture/changeling.png" id="5_3rnpf"]
+
+[resource]
+script = ExtResource("4_bydb0")
+unit_profile = ExtResource("5_3rnpf")
+unit_name = "变形怪"
+des_1 = "CHANGELING_DES_1"
+des_2 = "CHANGELING_DES_2"
+action_info_list = Array[ExtResource("1_ksym7")]([ExtResource("2_yh6a1"), ExtResource("3_ut5ss")])

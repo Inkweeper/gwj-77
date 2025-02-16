@@ -24,6 +24,7 @@ func set_form(player_form : Player.Form):
 
 func _on_pressed() -> void:
 	EventBus.form_decided.emit(form)
+	EventBus.form_checking_stopped.emit()
 
 func _on_mouse_entered() -> void:
 	EventBus.form_checking.emit(form)

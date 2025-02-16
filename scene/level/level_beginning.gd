@@ -6,6 +6,7 @@ func initialize():
 func enter():
 	GlobalValue.level.new_level()
 	# HACK
+	TranslationServer.set_locale("en")
 	transitioned.emit(self, "PlayerTurnStart")
 
 func exit():

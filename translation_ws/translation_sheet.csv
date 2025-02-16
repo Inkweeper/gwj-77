@@ -1,38 +1,47 @@
 ﻿id,en,zh
+_UNIT_NAME,,
+士兵,Soldier,士兵
+弓箭手,Archer,弓箭手
+斥候,Scout,斥候
+变形怪,Changeling,变形怪
+乌龟,Tortoise,乌龟
+蝙蝠,Bat,蝙蝠
+史莱姆,Slime,史莱姆
 _UNIT_DESCRIPTION,,
-MOB_DES_1,,虽然他们的盔甲对精于打击要害的你来说毫无威胁，但训练有素的士兵们一旦集结起来，将发挥出成倍于个体的力量。
-MOB_DES_2,,"许多刚穿上盔甲的士兵相信，这身防具能帮助他们免遭厄运，而只有久经沙场的老兵明白，在迷雾重重，危险莫测的地城中，身上厚重的甲胄既能成为一时的保障，也能成为埋葬他们一辈子的棺椁。
+MOB_DES_1,"Though their armors are nothing to you, they can be a great threat once united. ",虽然他们的盔甲对精于打击要害的你来说毫无威胁，但训练有素的士兵们一旦集结起来，将发挥出成倍于个体的力量。
+MOB_DES_2,"In a foggy and perlious dungeon, any life security measures won't lose reception. Many newbie soldiers believe armor means everything in a battle, while battle-hardened veterans know the fact that heavy armor can rather be their deadly coffin. 
+In most cases, it is not the armor, but the survival experience forged through countless life-and-death moments that is the only thing capable of making death miss its mark.","许多刚穿上盔甲的士兵相信，这身防具能帮助他们免遭厄运，而只有久经沙场的老兵明白，在迷雾重重，危险莫测的地城中，身上厚重的甲胄既能成为一时的保障，也能成为埋葬他们一辈子的棺椁。
 大部分情况下，能让死亡勉强失手的，只有经历无数次危急时刻淬炼出的生存经验。"
-ARCHER_DES_1,,势大力沉的长弓为他们提供稳定而致命的火力。相比近距离的殊死搏斗，这些使用弓的家伙们更加难缠，他们倾向于在远处冷静瞄准，占据战场优势。
-ARCHER_DES_2,,"如果你在地城中遇见了弓箭手，要么迅速远离，让他们无从射击，要么快速接近，在他们拉满弓之前解决他们。
-那些训练有素的弓手，以弓弦催动箭矢，割开空气，只留下一阵急促的暴鸣和敌人的尸体。"
-SCOUT_DES_1,,斥候的人员组成非常复杂，小偷、罪犯、杀手等掺杂其中，拿钱办事的冒险者有很多，斥候们则是其中的代表。
-SCOUT_DES_2,,"没有士兵厚重的盔甲，也没有弓箭手引以为傲的射程，斥候却以过人的行动速度作为优势，将杀伐果断视为第一准则。隐秘、迅捷、致命，他们始终保持着高效的行动策略，奔走在队伍的周围，一旦发现目标与危险，将在顷刻间作出行动。
+ARCHER_DES_1,"Powerful longbows provide them with critical firepower. Troublesome as archers are, they tend to calmly aim from a distance, domaining the battlefield.",势大力沉的长弓为他们提供稳定而致命的火力。相比近距离的搏斗者，这些使用弓的家伙们更加难缠，他们倾向于在远处冷静瞄准，占据战场优势。
+ARCHER_DES_2,"If you encounter archers in the dungeon, either quickly distance yourself to evade, or close the gap fast and knock off them before they fully draw their bows.  
+When the bowstring trembles and the arrow cuts through the air, your death knell will follow. ","如果你在地城中遇见了弓箭手，要么迅速远离，让他们无从射击，要么快速接近，在他们拉满弓之前解决他们。
+当弓弦颤动，箭矢割开空气，你的丧钟也将随之奏响。"
+SCOUT_DES_1,"Thieves, criminals, assassins... These adventurers have various backgrounds, but they all serves as scouts, swift and dangerous in action. ",斥候的人员组成非常复杂，小偷、罪犯、杀手等掺杂其中。拿钱办事的冒险者有很多，斥候们则是其中的代表。
+SCOUT_DES_2,"Without heavy armor of soldiers or long range of archers, scouts rely on their exceptional speed of movement as their advantage, making decisiveness in battle as their foremost principle. Stealthy, swift, and lethal, they maintain an efficient operational strategy, moving around the group, ready to act in an instant upon spotting their target.  
+The scout will watch your every move, waiting for the right moment to stab you.","没有士兵厚重的盔甲，也没有弓箭手引以为傲的射程，斥候却以过人的行动速度作为优势，将杀伐果断视为第一准则。隐秘、迅捷、致命，他们始终保持着高效的行动策略，奔走在队伍的周围，一旦发现目标与危险，将在顷刻间作出行动。
 在地城的角落中，斥候也许正在紧紧盯着你的一举一动，等待合适时机，将匕首利刃刺进你的身体。"
-TURTLE_DES_1,,变身为外壳坚固的陆龟形态，可以抵挡一次伤害。
-TURTLE_DES_2,,总有人对乌龟在陆地上的速度大加评论，但是要我说，当你有了足够坚韧的外壳，为什么还需要灵活的四肢呢？
-BAT_DES_1,,变身为行踪飘忽的蝙蝠形态，可以进行斜向移动和攻击。
-BAT_DES_2,,洞穴里有成千上万只蝙蝠，这再正常不过了，谁会特别注意这一只呢？
-SLIME_DES_1,,变身为灵活爬行的史莱姆，但是暂时失去攻击能力。
-SLIME_DES_2,,森林、山地、平原、洞穴…你几乎可以在任何环境里找到这种近似透明的怪物，他们威胁甚低，只能稍稍腐蚀装甲和武器。大部分人对它的威胁嗤之以鼻。但只要利用好史莱姆的能力，就能让他们为自己的傲慢付出代价。
-CHANGELING_DES_1,,你，掌握变化之力的上古种族末裔。虽然你的原始形态稍显脆弱，但你的智慧足以玩弄侵略者于股掌之间。
-CHANGELING_DES_2,,"拟态魔、换形怪、窃皮者，世间对你有着众多称呼。
-你的故事流传于不同民族与不同地区的人群之中，诉说着潜藏在暗影里的阴谋。父母用你来吓唬调皮的孩子，亡命之徒将你视作赏金的目标，疯人相信你代表着死亡与屠戮，但更多的人，则只将你当作是一句过于幼稚的玩笑，一阵随风划过的不安…
+TURTLE_DES_1,"Transforming into a turtle form with a tough shell, capable of withstanding one instance of damage.",变身为外壳坚固的陆龟形态，可以抵挡一次伤害。
+TURTLE_DES_2,"There are always people who comment on the turtle's slow speed on land, but if you ask me, when you have a shell tough enough, why would you need agile limbs?",总有人对乌龟在陆地上的速度大加评论，但是要我说，当你有了足够坚韧的外壳，为什么还需要灵活的四肢呢？
+BAT_DES_1,"Transforming into a fleeting bat form, allowing for diagonal movement and attacks.",变身为行踪飘忽的蝙蝠形态，可以进行斜向移动和攻击。
+BAT_DES_2,"There are thousands of bats in the cave, which is completely normal. Who would pay special attention to just one?",洞穴里有成千上万只蝙蝠，这再正常不过了，谁会特别注意这一只呢？
+SLIME_DES_1,"Transforming into a nimble, crawling slime, but temporarily losing the ability to attack.",变身为灵活爬行的史莱姆，但是暂时失去攻击能力。
+SLIME_DES_2,"Forests, mountains, plains, caves... You can find these nearly transparent creatures in almost any environment. Their threat is minimal, only capable of slightly corroding armor and weapons. Most people scoff at the danger they pose. But if one knows how to use a slime’s abilities wisely, they can make others pay for their arrogance.",森林、山地、平原、洞穴…你几乎可以在任何环境里找到这种近似透明的怪物，他们威胁甚低，只能稍稍腐蚀装甲和武器。大部分人对它的威胁嗤之以鼻。但只要利用好史莱姆的能力，就能让他们为自己的傲慢付出代价。
+CHANGELING_DES_1,"You, the descendant of an ancient race that commands the power of transformation. Though your original form is fragile, you have the wisdom to toy with invaders at your will.",你，掌握变化之力的上古种族末裔。虽然你的原始形态稍显脆弱，但你的智慧足以玩弄侵略者于股掌之间。
+CHANGELING_DES_2,"Mimic demons, shape-shifters, skin thieves...Your names vary and spreads all over the world, telling of the hidden conspiracies. Parents use you to frighten mischievous children, outlaws see you as exchange for bounty, the mad believe you bringer of the end, but most people simply dismiss you as a fiction. But only a very few know the truth—that behind all these false tales, you are an existence of endless transformation.","拟态魔、换形怪、窃皮者，世间对你有着众多称呼。
+你的故事流传于不同民族与不同地区的人群之中，诉说着潜藏在暗影里的阴谋。父母用你来吓唬调皮的孩子，亡命之徒将你视作赏金的目标，疯人相信你代表着死亡与屠戮，但更多的人，则只将你当作是一句过于幼稚的玩笑. 
 但只有极少数人知晓，在所有这些虚妄之言的背后，你，是何种千变万化的存在。"
 _ACTION_INFO,,
 Approach,Approach,十字逼近
-Approach_DES,,"向十字方向移动一格，缩短与目标之间的距离。
-优先缩短纵横距离中较长的那一个。若纵横距离相等，优先横向移动。"
+Approach_DES,Move one square in a cross direction. Prioritize shortening the longer of the H(prefered) or V distance to the target. ,十字移动一格，缩短与目标的距离。优先缩短纵横距离中较长者。若纵横距离相等，优先横向移动。
 Cross Move,Cross Move,十字移动
-Cross Move_DES,,向十字方向移动一格。
+Cross Move_DES,Move one square in a cross direction. ,向十字方向移动一格。
 Cross Attack,Cross Attack,十字打击
-Cross Attack_DES,,对上下左右邻近的一格发动一次攻击。
+Cross Attack_DES,Attack a surrounding square in a cross direction. ,对上下左右邻近的一格发动一次攻击。
 X Move,X Move,斜向移动
-X Move_DES,,向斜十字方向移动一格。
+X Move_DES,Move one square in a diagonal cross direction.,向斜十字方向移动一格。
 X Attack,X Attack,斜向打击
-X Attack_DES,,向斜十字方向邻近的一格发动一次攻击。
+X Attack_DES,Attack a surrounding square in a diagonal cross direction. ,向斜十字方向邻近的一格发动一次攻击。
 Free Move,Free Move,自由移动
-Free Move_DES,,移动到周围八个格子中的一个。
+Free Move_DES,Move to any of the surrounding 8 squares. ,移动到周围八个格子中的一个。
 Align or Shoot,Align or Shoot,对齐/射击
-Align or Shoot_DES,,"向十字方向移动一格，尝试与目标处于同一行或列。
-优先缩短纵横距离中较短的那一个。若纵横距离相等，优先横向移动。"
+Align or Shoot_DES,"Move one square in a cross direction, attempting to align with the target in the same row or column(prefered).  If already aligned and with no obstruction, shoot at the target.",十字移动一格，尝试与目标处于同一行或列。优先缩短纵横距离中较短者。若已对齐且无阻碍，则射击目标。

@@ -1,6 +1,7 @@
 extends Resource
 class_name UnitInfoRes
 
+@export var unit_profile : Texture2D
 @export var unit_name : String
 @export_multiline var des_1 : String
 @export_multiline var des_2 : String
