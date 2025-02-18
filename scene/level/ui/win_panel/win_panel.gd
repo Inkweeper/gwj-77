@@ -15,4 +15,4 @@ func _on_button_pressed() -> void:
 		return
 	if load(next_scene_path) == null:
 		return
-	SceneChanger.change_scene(next_scene_path)
+	SceneChanger.change_scene_to_path(next_scene_path)

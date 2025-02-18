@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://d18nooayl300m"]
+
+[ext_resource type="PackedScene" uid="uid://dcce8gpa7w8ln" path="res://scene/level/level.tscn" id="1_dfjbl"]
+[ext_resource type="PackedScene" uid="uid://0v45a5fulmc2" path="res://scene/chess/enemy/mob/mob.tscn" id="2_yhdbt"]
+[ext_resource type="Script" path="res://resource/action/action.gd" id="3_w5crm"]
+[ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="4_2nx1x"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_melee_attack.gd" id="5_aiml5"]
+[ext_resource type="Texture2D" uid="uid://np2oeh8f5dn6" path="res://asset/texture/aiming-grids/gwj-77-aiming-1.png" id="6_l8ts7"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/approach.gd" id="7_p4jpt"]
+[ext_resource type="PackedScene" uid="uid://hh8neym828v6" path="res://scene/chess/enemy/scout/scout.tscn" id="8_e5j0u"]
+[ext_resource type="PackedScene" uid="uid://day8ahv5hauxk" path="res://scene/chess/enemy/ranger/ranger.tscn" id="9_8ym7r"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/align_or_shoot.gd" id="10_rbaqq"]
+
+[sub_resource type="Resource" id="Resource_5y13o"]
+resource_local_to_scene = true
+script = ExtResource("5_aiml5")
+allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+action_name = "Cross Attack"
+action_type = 0
+range_indication_texture = ExtResource("4_2nx1x")
+
+[sub_resource type="Resource" id="Resource_awprm"]
+resource_local_to_scene = true
+script = ExtResource("7_p4jpt")
+allowed_gridpos = Array[Vector2i]([])
+action_name = "Approach"
+action_type = 1
+range_indication_texture = ExtResource("6_l8ts7")
+
+[sub_resource type="Resource" id="Resource_ldc5v"]
+resource_local_to_scene = true
+script = ExtResource("7_p4jpt")
+allowed_gridpos = Array[Vector2i]([])
+action_name = "Approach"
+action_type = 1
+range_indication_texture = ExtResource("6_l8ts7")
+
+[sub_resource type="Resource" id="Resource_1kmyl"]
+resource_local_to_scene = true
+script = ExtResource("5_aiml5")
+allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+action_name = "Cross Attack"
+action_type = 0
+range_indication_texture = ExtResource("4_2nx1x")
+
+[sub_resource type="Resource" id="Resource_bp1n5"]
+resource_local_to_scene = true
+script = ExtResource("10_rbaqq")
+allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+action_name = "Align or Shoot"
+action_type = 1
+
+[node name="Level8" instance=ExtResource("1_dfjbl")]
+chessboard_size = Vector2i(7, 7)
+
+[node name="Player" parent="ChessContainer" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 14)
+
+[node name="Mob" parent="ChessContainer" index="1" instance=ExtResource("2_yhdbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 22)
+action_list = Array[ExtResource("3_w5crm")]([SubResource("Resource_5y13o"), SubResource("Resource_awprm")])
+
+[node name="Mob2" parent="ChessContainer" index="2" instance=ExtResource("2_yhdbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 26)
+action_list = Array[ExtResource("3_w5crm")]([SubResource("Resource_5y13o"), SubResource("Resource_awprm")])
+
+[node name="Scout" parent="ChessContainer" index="3" instance=ExtResource("8_e5j0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+action_list = Array[ExtResource("3_w5crm")]([SubResource("Resource_ldc5v"), SubResource("Resource_ldc5v"), SubResource("Resource_1kmyl")])
+
+[node name="Scout2" parent="ChessContainer" index="4" instance=ExtResource("8_e5j0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 26)
+action_list = Array[ExtResource("3_w5crm")]([SubResource("Resource_ldc5v"), SubResource("Resource_ldc5v"), SubResource("Resource_1kmyl")])
+
+[node name="Ranger" parent="ChessContainer" index="5" instance=ExtResource("9_8ym7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2)
+action_list = Array[ExtResource("3_w5crm")]([SubResource("Resource_bp1n5")])
+
+[node name="Ranger2" parent="ChessContainer" index="6" instance=ExtResource("9_8ym7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 10)
+action_list = Array[ExtResource("3_w5crm")]([SubResource("Resource_bp1n5")])
+
+[node name="Chessboard" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 4, 6, 0, 5, 6, 0, 6, 6, 0, 6, 5, 0, 6, 4, 0, 6, 3, 0, 6, 2, 0, 6, 1, 0, 5, 1, 0, 4, 2, 0, 3, 2, 0, 2, 2, 0, 1, 2, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 3, 0, 4, 3, 0, 3, 3, 0, 2, 3, 0, 5, 2, 0, 4, 4, 0, 3, 4, 0, 2, 4, 0, 1, 4, 0, 1, 3, 0, 4, 5, 0, 3, 5, 0, 2, 5, 0, 1, 5, 0, 5, 4, 0, 5, 5, 0)
+}
+
+[node name="WinPanel" parent="WinLoseInfoLayer" index="0"]
+next_scene_path = "res://scene/game_scene/cutscenes/ed/ed.tscn"
+win_conclusion = "CHAPTER_3_ED"

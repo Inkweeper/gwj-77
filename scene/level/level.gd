@@ -34,6 +34,7 @@ signal rewind_request
 func _ready() -> void:
 	GlobalValue.level = self
 	statemachine.initialize()
+	reset_camera()
 	# HACK
 	#print(chessboard.local_to_map(Vector3(0.1,0.05,0.1)))
 	#print(chessboard.map_to_local(Vector3i(0,0,0)))
@@ -45,11 +46,14 @@ func _process(delta: float) -> void:
 func new_level():
 	chessboard_history_list.clear()
 	current_transform_permissions = total_transform_permissions.duplicate()
-	camera_3d.max_pos_bounds = Vector2(chessboard_size.x*4.0, chessboard_size.y*6.0)
+	reset_camera()
+	pass
+
+func reset_camera():
+	camera_3d.max_pos_bounds = Vector2(chessboard_size.x*4.0, chessboard_size.y*4.0 + 10)
 	camera_3d.position.y = 20.0
 	camera_3d.position.x = camera_3d.min_pos_bounds.x + 0.4*(camera_3d.max_pos_bounds.x-camera_3d.min_pos_bounds.x)
 	camera_3d.position.z = camera_3d.min_pos_bounds.y + 0.6*(camera_3d.max_pos_bounds.y-camera_3d.min_pos_bounds.y)
-	pass
 
 ## 记录本回合的棋子状态和剩余可变形列表
 func register_chess_status_this_turn():
@@ -180,6 +184,7 @@ func hide_action_list():
 
 ## 将游戏场景恢复到本回合开始时的状态,根据历史表摆放好棋子即可
 func rewind_to_turn_start():
+	clear_aim_box()
 	for chess in chess_container.get_children():
 		if chess is Chess:
 			chess.queue_free()
@@ -197,8 +202,10 @@ func rewind_to_turn_start():
 ## 将游戏场景恢复到上一个回合开始时的状态,根据历史表摆放好棋子即可
 func rewind_to_last_turn():
 	if chessboard_history_list.size()==1:
+		clear_aim_box()
 		rewind_to_turn_start()
 		return
+	clear_aim_box()
 	for chess in chess_container.get_children():
 		if chess is Chess:
 			chess.queue_free()

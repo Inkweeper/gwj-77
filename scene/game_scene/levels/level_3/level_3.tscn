@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqa4d0ik5b0dq"]
+
+[ext_resource type="PackedScene" uid="uid://dcce8gpa7w8ln" path="res://scene/level/level.tscn" id="1_1na3l"]
+[ext_resource type="Script" path="res://scene/game_scene/levels/level_1/level_beginning.gd" id="2_318xr"]
+[ext_resource type="PackedScene" uid="uid://hh8neym828v6" path="res://scene/chess/enemy/scout/scout.tscn" id="2_uooc4"]
+[ext_resource type="Script" path="res://resource/action/action.gd" id="3_aqp6o"]
+[ext_resource type="Texture2D" uid="uid://np2oeh8f5dn6" path="res://asset/texture/aiming-grids/gwj-77-aiming-1.png" id="4_3qclc"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/approach.gd" id="5_1de0v"]
+[ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="6_fjokd"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_melee_attack.gd" id="7_7vs8a"]
+
+[sub_resource type="Resource" id="Resource_cobue"]
+resource_local_to_scene = true
+script = ExtResource("5_1de0v")
+allowed_gridpos = Array[Vector2i]([])
+action_name = "Approach"
+action_type = 1
+range_indication_texture = ExtResource("4_3qclc")
+
+[sub_resource type="Resource" id="Resource_pwvp1"]
+resource_local_to_scene = true
+script = ExtResource("7_7vs8a")
+allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+action_name = "Cross Attack"
+action_type = 0
+range_indication_texture = ExtResource("6_fjokd")
+
+[node name="Level3" instance=ExtResource("1_1na3l")]
+chessboard_size = Vector2i(1, 5)
+total_transform_permissions = Array[int]([1])
+
+[node name="LevelBeginning" parent="Statemachine" index="0"]
+script = ExtResource("2_318xr")
+
+[node name="Scout" parent="ChessContainer" index="1" instance=ExtResource("2_uooc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2)
+action_list = Array[ExtResource("3_aqp6o")]([SubResource("Resource_cobue"), SubResource("Resource_cobue"), SubResource("Resource_pwvp1")])
+
+[node name="Chessboard" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0)
+}
+
+[node name="WinPanel" parent="WinLoseInfoLayer" index="0"]
+next_scene_path = "res://scene/game_scene/levels/level_4/level_4.tscn"
+
+[node name="PanelContainer" type="PanelContainer" parent="WinLoseInfoLayer" index="2"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -710.0
+offset_top = 94.0
+offset_right = -110.0
+offset_bottom = -104.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="WinLoseInfoLayer/PanelContainer" index="0"]
+custom_minimum_size = Vector2(600, 450)
+layout_mode = 2
+size_flags_vertical = 1
+text = "CHAPTER_2_OP"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="gui_input" from="WinLoseInfoLayer/PanelContainer" to="Statemachine/LevelBeginning" method="_on_panel_container_gui_input"]

@@ -20,3 +20,22 @@ _ED,,
 ED_1,"""I heard that, the monster in this cave can transform into a shape, with three giant mouths filled with sharp fangs, seventeen claws that can slice through steel like paper, and silently ambush victims like a snake...""",“我听说，这洞窟里的怪物，能变化出三个长满尖牙的巨口，十七只削铁如泥的利爪，像蛇一样无声息地伏杀遇难者…”
 ED_2,Your terrifying reputation spreads widely among the invaders' camp outside the cave.,你的恐怖声名在洞穴外的入侵者营地中大肆流传。
 ED_3,"The moment you step out of the cave, these cowards are so frightened that they throw away their items, fleeing in all directions without looking back. Even though a lavishly dressed figure shouts orders in the camp, they ignore him completely.",当你踏出洞穴的那一刻，这些懦夫吓得丢盔弃甲，头也不回地四散逃去。即使一个衣着华贵的家伙在营地大声喝令，他们也不管不顾。
+ED_4,"*** YOU WIN ***
+Finally, you've expelled all the intruders. 
+Either to adventure in this brand new world, or to continue your centurial old dreams, 
+now you enjoy a free future. ","*** 胜利! ***
+终于，你驱逐了所有入侵者。
+不管是选择探索这个崭新的世界，还是回归你的古老梦境，
+未来尽在你掌握之中。"
+_DEFAUT,,
+CHOOSE_LANG,Choose Language,选择语言
+CONFIRM_LANG,Confirm,确定
+- Unit -,- Unit -,- 单位 -
+- Action -,- Action -,- 行动 -
+Choose Your Form,Choose Your Form,选择你的形态
+Choose Your Action,Choose Your Action,选择你的行动
+Rewind,Rewind,后退
+VICTORY,VICTORY,胜  利
+Go Next,Go Next,继续
+DEFEATED,DEFEATED,失  败
+Retry,Retry,重试

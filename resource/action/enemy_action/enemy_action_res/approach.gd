@@ -18,13 +18,24 @@ func if_can_execute()->bool:
 		var chess : Chess = GlobalValue.level.check_gridpos_occupied(target_gridpos)
 		if chess == null:
 			action_acted = true
-	if not action_acted:
+		if not action_acted:
+			target_gridpos = Vector2i(gridpos.x , gridpos.y + sign(m_d.y))
+			chess = GlobalValue.level.check_gridpos_occupied(target_gridpos)
+			if chess == null:
+				action_acted = true
+	else:
 		target_gridpos = Vector2i(gridpos.x , gridpos.y + sign(m_d.y))
 		var chess : Chess = GlobalValue.level.check_gridpos_occupied(target_gridpos)
 		if chess == null:
 			action_acted = true
+		if not action_acted:
+			target_gridpos = Vector2i(gridpos.x + sign(m_d.x) , gridpos.y)
+			chess = GlobalValue.level.check_gridpos_occupied(target_gridpos)
+			if chess == null:
+				action_acted = true
 	if action_acted:
 		return true
+	print("cant approach")
 	return false
 
 ## 判断能否执行, 如果能, 直接执行并返回true
@@ -45,12 +56,24 @@ func if_execute()->bool:
 		if chess == null:
 			execute([target_gridpos])
 			action_acted = true
-	if not action_acted:
+		if not action_acted:
+			target_gridpos = Vector2i(gridpos.x , gridpos.y + sign(m_d.y))
+			chess = GlobalValue.level.check_gridpos_occupied(target_gridpos)
+			if chess == null:
+				execute([target_gridpos])
+				action_acted = true
+	else:
 		target_gridpos = Vector2i(gridpos.x , gridpos.y + sign(m_d.y))
 		var chess : Chess = GlobalValue.level.check_gridpos_occupied(target_gridpos)
 		if chess == null:
 			execute([target_gridpos])
 			action_acted = true
+		if not action_acted:
+			target_gridpos = Vector2i(gridpos.x + sign(m_d.x) , gridpos.y)
+			chess = GlobalValue.level.check_gridpos_occupied(target_gridpos)
+			if chess == null:
+				execute([target_gridpos])
+				action_acted = true
 	if action_acted:
 		return true
 	return false

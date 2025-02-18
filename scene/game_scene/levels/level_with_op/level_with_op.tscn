@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6ciwr342enbm"]
+
+[ext_resource type="PackedScene" uid="uid://dcce8gpa7w8ln" path="res://scene/level/level.tscn" id="1_adxme"]
+[ext_resource type="Script" path="res://scene/game_scene/levels/level_with_op/level_beginning.gd" id="2_cdxcr"]
+
+[node name="LevelWithOp" instance=ExtResource("1_adxme")]
+
+[node name="LevelBeginning" parent="Statemachine" index="0"]
+script = ExtResource("2_cdxcr")
+
+[node name="PanelContainer" type="PanelContainer" parent="WinLoseInfoLayer" index="2"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -710.0
+offset_top = 94.0
+offset_right = -110.0
+offset_bottom = -104.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="WinLoseInfoLayer/PanelContainer" index="0"]
+custom_minimum_size = Vector2(600, 450)
+layout_mode = 2
+size_flags_vertical = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="gui_input" from="WinLoseInfoLayer/PanelContainer" to="Statemachine/LevelBeginning" method="_on_panel_container_gui_input"]

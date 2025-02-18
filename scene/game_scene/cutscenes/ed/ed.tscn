@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgaa6knq8ahht"]
+
+[ext_resource type="PackedScene" uid="uid://d1djxjj0tlix1" path="res://scene/cutscene/cutscene.tscn" id="1_73wyy"]
+[ext_resource type="Script" path="res://resource/cutscene_seq_res/cutscene_entry_res.gd" id="2_ouul0"]
+
+[sub_resource type="Resource" id="Resource_gq484"]
+script = ExtResource("2_ouul0")
+text = "ED_1"
+se_path = ""
+bgm_path = ""
+
+[sub_resource type="Resource" id="Resource_0y7v2"]
+script = ExtResource("2_ouul0")
+text = "ED_2"
+se_path = ""
+bgm_path = ""
+
+[sub_resource type="Resource" id="Resource_7mux6"]
+script = ExtResource("2_ouul0")
+text = "ED_3"
+se_path = ""
+bgm_path = ""
+
+[sub_resource type="Resource" id="Resource_vi8rm"]
+script = ExtResource("2_ouul0")
+text = "ED_4"
+se_path = ""
+bgm_path = ""
+
+[node name="Ed" instance=ExtResource("1_73wyy")]
+cutscene_entry_list = Array[ExtResource("2_ouul0")]([SubResource("Resource_gq484"), SubResource("Resource_0y7v2"), SubResource("Resource_7mux6"), SubResource("Resource_vi8rm")])

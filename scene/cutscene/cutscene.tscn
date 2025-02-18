@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1djxjj0tlix1"]
+
+[ext_resource type="Script" path="res://scene/cutscene/cutscene.gd" id="1_xhysj"]
+
+[node name="Cutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhysj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(900, 160)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="ColorRect/VBoxContainer/CenterContainer/TextureRect" to="." method="_on_texture_rect_gui_input"]

@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://b364p1ucxmc84"]
+
+[ext_resource type="PackedScene" uid="uid://dcce8gpa7w8ln" path="res://scene/level/level.tscn" id="1_3pc8h"]
+[ext_resource type="Script" path="res://scene/game_scene/levels/level_1/level_beginning.gd" id="2_knk37"]
+[ext_resource type="Script" path="res://resource/action/action.gd" id="2_s7l5k"]
+[ext_resource type="PackedScene" uid="uid://0v45a5fulmc2" path="res://scene/chess/enemy/mob/mob.tscn" id="3_mv24q"]
+[ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="3_thjvj"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_melee_attack.gd" id="4_ag0wr"]
+[ext_resource type="Texture2D" uid="uid://np2oeh8f5dn6" path="res://asset/texture/aiming-grids/gwj-77-aiming-1.png" id="5_gll3h"]
+[ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/approach.gd" id="6_lgxab"]
+
+[sub_resource type="Resource" id="Resource_rsa40"]
+resource_local_to_scene = true
+script = ExtResource("4_ag0wr")
+allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+action_name = "Cross Attack"
+action_type = 0
+range_indication_texture = ExtResource("3_thjvj")
+
+[sub_resource type="Resource" id="Resource_3tbtp"]
+resource_local_to_scene = true
+script = ExtResource("6_lgxab")
+allowed_gridpos = Array[Vector2i]([])
+action_name = "Approach"
+action_type = 1
+range_indication_texture = ExtResource("5_gll3h")
+
+[node name="Level2" instance=ExtResource("1_3pc8h")]
+chessboard_size = Vector2i(4, 3)
+total_transform_permissions = Array[int]([1])
+
+[node name="LevelBeginning" parent="Statemachine" index="0"]
+script = ExtResource("2_knk37")
+
+[node name="Player" parent="ChessContainer" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="Mob" parent="ChessContainer" index="1" instance=ExtResource("3_mv24q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
+action_list = Array[ExtResource("2_s7l5k")]([SubResource("Resource_rsa40"), SubResource("Resource_3tbtp")])
+
+[node name="Mob2" parent="ChessContainer" index="2" instance=ExtResource("3_mv24q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+action_list = Array[ExtResource("2_s7l5k")]([SubResource("Resource_rsa40"), SubResource("Resource_3tbtp")])
+
+[node name="Mob3" parent="ChessContainer" index="3" instance=ExtResource("3_mv24q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 10)
+action_list = Array[ExtResource("2_s7l5k")]([SubResource("Resource_rsa40"), SubResource("Resource_3tbtp")])
+
+[node name="Chessboard" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(0, 0, 0, 0, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 2, 1, 0, 2, 0, 0, 1, 0, 0, 1, 1, 0, 3, 2, 0, 3, 1, 0, 3, 0, 0)
+}
+
+[node name="WinPanel" parent="WinLoseInfoLayer" index="0"]
+next_scene_path = "res://scene/game_scene/levels/level_3/level_3.tscn"
+win_conclusion = "CHAPTER_1_ED"
+
+[node name="PanelContainer" type="PanelContainer" parent="WinLoseInfoLayer" index="2"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -710.0
+offset_top = 94.0
+offset_right = -110.0
+offset_bottom = -104.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="WinLoseInfoLayer/PanelContainer" index="0"]
+custom_minimum_size = Vector2(600, 450)
+layout_mode = 2
+size_flags_vertical = 1
+text = "CHAPTER_1_OP"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="gui_input" from="WinLoseInfoLayer/PanelContainer" to="Statemachine/LevelBeginning" method="_on_panel_container_gui_input"]
