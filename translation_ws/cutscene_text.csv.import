@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dngkpefrsxhup"
+
+[deps]
+
+files=["res://translation_ws/cutscene_text.en.translation", "res://translation_ws/cutscene_text.zh.translation"]
+
+source_file="res://translation_ws/cutscene_text.csv"
+dest_files=["res://translation_ws/cutscene_text.en.translation", "res://translation_ws/cutscene_text.zh.translation"]
+
+[params]
+
+compress=true
+delimiter=0

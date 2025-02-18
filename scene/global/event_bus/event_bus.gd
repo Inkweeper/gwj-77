@@ -27,3 +27,6 @@ signal defeated
 signal inspect_unit_info_res_request(unit_info_res : UnitInfoRes)
 ## 当单位不再被检视时发出
 signal stop_inspect_request
+
+## 当场景切换完毕时发出
+signal scene_changed_ready

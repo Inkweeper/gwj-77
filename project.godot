@@ -20,6 +20,7 @@ GlobalValue="*res://scene/global/global_value/global_value.tscn"
 EventBus="*res://scene/global/event_bus/event_bus.tscn"
 PlayerActionManager="*res://scene/global/player_action_manager/player_action_manager.tscn"
 EnemyActionManager="*res://scene/global/enemy_action_manager/enemy_action_manager.tscn"
+SceneChanger="*res://scene/global/scene_changer/scene_changer.tscn"
 
 [display]
 
@@ -32,6 +33,7 @@ folder_colors={
 "res://resource/": "green",
 "res://scene/": "red",
 "res://scene/chess/": "orange",
+"res://scene/game_scene/": "yellow",
 "res://scene/global/": "blue",
 "res://scene/level/": "red",
 "res://scene/level/ui/": "green",
@@ -82,7 +84,7 @@ rmb={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translation_ws/translation_sheet.zh.translation", "res://translation_ws/translation_sheet.en.translation")
+locale/translations=PackedStringArray("res://translation_ws/translation_sheet.zh.translation", "res://translation_ws/translation_sheet.en.translation", "res://translation_ws/cutscene_text.en.translation", "res://translation_ws/cutscene_text.zh.translation")
 
 [layer_names]
 

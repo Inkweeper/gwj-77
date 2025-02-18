@@ -7,7 +7,7 @@ const CHESSBOARD_GRID_SIZE : Vector2 = Vector2(4.0 , 4.0)
 
 # /export vars
 @export var chessboard_size : Vector2i
-@export var total_transform_permissions : Array[Player.Form]
+@export var total_transform_permissions : Array[Player.Form] = []
 # /
 
 # /node reference
