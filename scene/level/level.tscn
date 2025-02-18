@@ -118,9 +118,9 @@ script = ExtResource("9_by7vy")
 
 [node name="InformationPanel" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_right = 0.235
+anchor_right = 0.278
 anchor_bottom = 1.0
-offset_right = 49.28
+offset_right = -0.256042
 grow_vertical = 2
 
 [node name="UnitInfoInspector" parent="CanvasLayer/InformationPanel" instance=ExtResource("26_7hq4v")]
