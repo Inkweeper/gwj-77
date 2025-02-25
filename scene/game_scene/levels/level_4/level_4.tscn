@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="6_bjjki"]
 [ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_melee_attack.gd" id="7_60xwa"]
 
-[sub_resource type="Resource" id="Resource_ky7rp"]
+[sub_resource type="Resource" id="Resource_ce6v6"]
 resource_local_to_scene = true
 script = ExtResource("5_6oljo")
 allowed_gridpos = Array[Vector2i]([])
@@ -16,7 +16,7 @@ action_name = "Approach"
 action_type = 1
 range_indication_texture = ExtResource("4_uerq3")
 
-[sub_resource type="Resource" id="Resource_ub3ql"]
+[sub_resource type="Resource" id="Resource_dkf3a"]
 resource_local_to_scene = true
 script = ExtResource("7_60xwa")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -24,7 +24,7 @@ action_name = "Cross Attack"
 action_type = 0
 range_indication_texture = ExtResource("6_bjjki")
 
-[sub_resource type="Resource" id="Resource_3pt5m"]
+[sub_resource type="Resource" id="Resource_g3ydp"]
 resource_local_to_scene = true
 script = ExtResource("5_6oljo")
 allowed_gridpos = Array[Vector2i]([])
@@ -32,7 +32,7 @@ action_name = "Approach"
 action_type = 1
 range_indication_texture = ExtResource("4_uerq3")
 
-[sub_resource type="Resource" id="Resource_odgn4"]
+[sub_resource type="Resource" id="Resource_es1kt"]
 resource_local_to_scene = true
 script = ExtResource("7_60xwa")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -40,7 +40,7 @@ action_name = "Cross Attack"
 action_type = 0
 range_indication_texture = ExtResource("6_bjjki")
 
-[sub_resource type="Resource" id="Resource_tnqhw"]
+[sub_resource type="Resource" id="Resource_mk82w"]
 resource_local_to_scene = true
 script = ExtResource("5_6oljo")
 allowed_gridpos = Array[Vector2i]([])
@@ -48,7 +48,7 @@ action_name = "Approach"
 action_type = 1
 range_indication_texture = ExtResource("4_uerq3")
 
-[sub_resource type="Resource" id="Resource_n37w4"]
+[sub_resource type="Resource" id="Resource_35ahw"]
 resource_local_to_scene = true
 script = ExtResource("7_60xwa")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -65,15 +65,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 
 [node name="Scout" parent="ChessContainer" index="1" instance=ExtResource("2_pq3j7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2)
-action_list = Array[ExtResource("3_iokwu")]([SubResource("Resource_ky7rp"), SubResource("Resource_ky7rp"), SubResource("Resource_ub3ql")])
+action_list = Array[ExtResource("3_iokwu")]([SubResource("Resource_ce6v6"), SubResource("Resource_ce6v6"), SubResource("Resource_dkf3a")])
 
 [node name="Scout2" parent="ChessContainer" index="2" instance=ExtResource("2_pq3j7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 14)
-action_list = Array[ExtResource("3_iokwu")]([SubResource("Resource_3pt5m"), SubResource("Resource_3pt5m"), SubResource("Resource_odgn4")])
+action_list = Array[ExtResource("3_iokwu")]([SubResource("Resource_g3ydp"), SubResource("Resource_g3ydp"), SubResource("Resource_es1kt")])
 
 [node name="Scout3" parent="ChessContainer" index="3" instance=ExtResource("2_pq3j7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 10)
-action_list = Array[ExtResource("3_iokwu")]([SubResource("Resource_tnqhw"), SubResource("Resource_tnqhw"), SubResource("Resource_n37w4")])
+action_list = Array[ExtResource("3_iokwu")]([SubResource("Resource_mk82w"), SubResource("Resource_mk82w"), SubResource("Resource_35ahw")])
 
 [node name="Chessboard" parent="." index="2"]
 data = {

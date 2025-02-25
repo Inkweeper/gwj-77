@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d18ctpryr8tqt" path="res://asset/texture/aiming-grids/gwj-77-aiming-4.png" id="6_fjokd"]
 [ext_resource type="Script" path="res://resource/action/enemy_action/enemy_action_res/enemy_melee_attack.gd" id="7_7vs8a"]
 
-[sub_resource type="Resource" id="Resource_cobue"]
+[sub_resource type="Resource" id="Resource_hgx0r"]
 resource_local_to_scene = true
 script = ExtResource("5_1de0v")
 allowed_gridpos = Array[Vector2i]([])
@@ -17,7 +17,7 @@ action_name = "Approach"
 action_type = 1
 range_indication_texture = ExtResource("4_3qclc")
 
-[sub_resource type="Resource" id="Resource_pwvp1"]
+[sub_resource type="Resource" id="Resource_n1i12"]
 resource_local_to_scene = true
 script = ExtResource("7_7vs8a")
 allowed_gridpos = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
@@ -26,7 +26,7 @@ action_type = 0
 range_indication_texture = ExtResource("6_fjokd")
 
 [node name="Level3" instance=ExtResource("1_1na3l")]
-chessboard_size = Vector2i(1, 5)
+chessboard_size = Vector2i(5, 1)
 total_transform_permissions = Array[int]([1])
 
 [node name="LevelBeginning" parent="Statemachine" index="0"]
@@ -34,7 +34,7 @@ script = ExtResource("2_318xr")
 
 [node name="Scout" parent="ChessContainer" index="1" instance=ExtResource("2_uooc4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2)
-action_list = Array[ExtResource("3_aqp6o")]([SubResource("Resource_cobue"), SubResource("Resource_cobue"), SubResource("Resource_pwvp1")])
+action_list = Array[ExtResource("3_aqp6o")]([SubResource("Resource_hgx0r"), SubResource("Resource_hgx0r"), SubResource("Resource_n1i12")])
 
 [node name="Chessboard" parent="." index="2"]
 data = {

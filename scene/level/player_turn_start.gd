@@ -7,6 +7,7 @@ func initialize():
 	pass
 
 func enter():
+	allow_rewind = false
 	GlobalValue.level.register_chess_status_this_turn()
 	GlobalValue.level.ask_for_morph()
 	allow_rewind = true

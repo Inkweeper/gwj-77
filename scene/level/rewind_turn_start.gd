@@ -8,6 +8,7 @@ func initialize():
 	pass
 
 func enter():
+	allow_rewind = false
 	GlobalValue.level.hide_action_list()
 	await get_tree().create_timer(0.1).timeout
 	GlobalValue.level.ask_for_morph()

@@ -69,7 +69,7 @@ func register_chess_status_this_turn():
 			chess_status_list.append(chess_status)
 			
 	var chessboard_history : ChessboardHistory = ChessboardHistory.new()
-	chessboard_history.chess_status_list = chess_status_list
+	chessboard_history.chess_status_list = chess_status_list.duplicate()
 	chessboard_history.transform_permissions = current_transform_permissions.duplicate()
 	
 	chessboard_history_list.append(chessboard_history)
@@ -118,6 +118,7 @@ func ask_for_morph():
 func decide_morph(form:Player.Form):
 	EventBus.form_decided.disconnect(decide_morph)
 	
+	#HACK
 	current_transform_permissions.erase(form)
 	
 	var player : Player = get_tree().get_first_node_in_group("player")
@@ -184,12 +185,12 @@ func hide_action_list():
 
 ## 将游戏场景恢复到本回合开始时的状态,根据历史表摆放好棋子即可
 func rewind_to_turn_start():
-	clear_aim_box()
+	PlayerActionManager.cancel_action_selection()
 	for chess in chess_container.get_children():
 		if chess is Chess:
 			chess.queue_free()
 	var chess_board_history : ChessboardHistory = chessboard_history_list.back() as ChessboardHistory
-	var transform_permissions := chess_board_history.transform_permissions
+	var transform_permissions := chess_board_history.transform_permissions.duplicate()
 	current_transform_permissions = transform_permissions
 	var chess_status_list := chess_board_history.chess_status_list
 	for chess_status in chess_status_list:
@@ -202,16 +203,15 @@ func rewind_to_turn_start():
 ## 将游戏场景恢复到上一个回合开始时的状态,根据历史表摆放好棋子即可
 func rewind_to_last_turn():
 	if chessboard_history_list.size()==1:
-		clear_aim_box()
 		rewind_to_turn_start()
 		return
-	clear_aim_box()
+	PlayerActionManager.cancel_action_selection()
 	for chess in chess_container.get_children():
 		if chess is Chess:
 			chess.queue_free()
 	chessboard_history_list.pop_back()
 	var chess_board_history : ChessboardHistory = chessboard_history_list.back() as ChessboardHistory
-	var transform_permissions := chess_board_history.transform_permissions
+	var transform_permissions := chess_board_history.transform_permissions.duplicate()
 	current_transform_permissions = transform_permissions
 	var chess_status_list := chess_board_history.chess_status_list
 	for chess_status in chess_status_list:

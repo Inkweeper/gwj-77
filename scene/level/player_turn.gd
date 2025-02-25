@@ -12,6 +12,7 @@ func initialize():
 	pass
 
 func enter():
+	allow_rewind = false
 	#print("player turn")
 	await get_tree().create_timer(0.2).timeout
 	GlobalValue.level.get_player_action_list()

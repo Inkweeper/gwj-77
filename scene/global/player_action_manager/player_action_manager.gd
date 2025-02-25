@@ -79,6 +79,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			processing_player_action_select_button.enable_button()
 			deactivate()
 
+## 取消选中当前行动
+func cancel_action_selection():
+	GlobalValue.level.clear_aim_box()
+	if processing_player_action_select_button:
+		processing_player_action_select_button.enable_button()
+	deactivate()
+
 ## 用于行动和行动按钮注册自己
 func register_action(action:PlayerAction, button:PlayerActionSelectButton):
 	if processing_player_action:
